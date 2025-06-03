@@ -1,0 +1,75 @@
+.myHeader{
+
+	background-color: cyan;
+	color: red;
+	font-family: courier;
+	font-size: 64px;
+	height: 200px;
+	weight: 100%;
+}
+
+
+.borduri{
+	border-color: pink;
+	border-width: 15px;
+	margin: 15px 20px 15px 5%;
+}
+
+.myMain
+{
+	padding: 20px;
+	margin: 30 px ;
+	border:solid red;
+	background-color: seagreen;
+	color: whitesmoke;
+	font-family: Arial;
+	font-size: 32px;
+
+}
+
+.ancoreHead{
+	color: green;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 7px;
+
+}
+
+#myH1{
+	color: orange;
+	font-family: fantasy;
+	-spacing: 10px;
+	font-size: 36px;
+	text-align: center;
+
+}
+
+#myH2{
+	color: lightyellow;
+	font-family: comicsans;
+	letter-spacing: 3px;
+	font-size: 36px;
+	text-align: right;
+
+}
+
+#myH3{
+	color: goldenrod;
+	font-family: monospace;
+	font-size: 40px;
+
+}
+
+.myFooter
+{
+	padding: 20px;
+	margin: 30 px ;
+	border:solid red;
+	background-color: pink;
+	color: whitesmoke;
+	font-family: Verdana;
+	font-size: 16px;
+
+}
+

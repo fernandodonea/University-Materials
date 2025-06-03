@@ -1,0 +1,35 @@
+# System Files
+
+#macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+#windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+#linux
+*~
+
+#temporary files
+*.tmp
+*.bak
+
+#obsidan
+.obsidian/
+
+
+#python
+__pycache__/
+*.py[cod]
+
+#c++
+*.o
+*.obj
+*.exe
+*.dll
+
+#symbolic links
+*.lnk

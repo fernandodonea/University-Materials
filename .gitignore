@@ -38,9 +38,10 @@ __pycache__/
 *.lnk
 
 #vscode
-.vscode/
-.dSYM
-.yml
+*.vscode/
+*.dSYM
+*.yml
+*.dSYM
 
 #clion
 .idea/

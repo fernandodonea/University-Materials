@@ -1,7 +1,5 @@
 # University Materials
 
-# University Materials
-
 some stuff from university.
 folders might help you find what you need.  
 or not. who knows.

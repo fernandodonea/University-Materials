@@ -19,6 +19,8 @@ Desktop.ini
 
 #obsidan
 .obsidian/
+*.md
+!README.md
 
 
 #python
@@ -47,6 +49,7 @@ __pycache__/
 .idea/
 cmake-build-*/
 CMakeLists.txt
+*.Contents
 
 
 #unix executables
@@ -60,8 +63,25 @@ CMakeLists.txt
 *.dat
 
 
+#executable files i just could not find a way to ignore them all at once
 
 year-1/semester-2/StructDate/SD-Colocviu/sd-Colocviu-Model/sd-1
 year-1/semester-2/StructDate/SD-Colocviu/sd-Colocviu-Model/sd-2
 year-1/semester-2/StructDate/SD-Colocviu/sd-Colocviu-Model/sd-3
+
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-1/sd_lab1/main
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-2/paranteze
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-3/#2746 Heap Sort/heap_sort.in
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-3/#2746 Heap Sort/main
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-3/#3011 lastk/main
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-3/Interclasari/interclasari.in
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-3/Interclasari/main
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-3/minHeap/minHeap
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-4/Arbore binar de cautare/main
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-4/Arbore binar de cautare/Contents/Info.plist
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-4/Arbore binar de cautare/Contents/Resources/DWARF/main
+year-1/semester-2/StructDate/SD-Laborator/sd-Laborator-1/sd_lab1/liste
+POO Tutoriat 14.md
+
+
 

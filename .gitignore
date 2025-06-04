@@ -30,6 +30,9 @@ __pycache__/
 *.obj
 *.exe
 *.dll
+*.lib
+*.pdb
+*.msi
 
 #symbolic links
 *.lnk
@@ -37,4 +40,27 @@ __pycache__/
 #vscode
 .vscode/
 .dSYM
+.yml
+
+#clion
+.idea/
+cmake-build-*/
+CMakeLists.txt
+
+
+#unix executables
+*.out
+*.so
+*.a
+*.elf
+
+#binary files
+*.bin
+*.dat
+
+
+
+year-1/semester-2/StructDate/SD-Colocviu/sd-Colocviu-Model/sd-1
+year-1/semester-2/StructDate/SD-Colocviu/sd-Colocviu-Model/sd-2
+year-1/semester-2/StructDate/SD-Colocviu/sd-Colocviu-Model/sd-3
 

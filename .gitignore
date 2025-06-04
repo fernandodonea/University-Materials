@@ -33,3 +33,8 @@ __pycache__/
 
 #symbolic links
 *.lnk
+
+#vscode
+.vscode/
+.dSYM
+

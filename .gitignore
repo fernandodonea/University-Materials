@@ -19,8 +19,6 @@ Desktop.ini
 
 #obsidan
 .obsidian/
-*.md
-!README.md
 
 
 #python

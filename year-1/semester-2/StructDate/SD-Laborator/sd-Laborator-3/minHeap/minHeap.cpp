@@ -33,7 +33,6 @@ void inserare(int x)
     sz++;
     H[sz]=x;
     urcare(sz);
-
 }
 
 int minim()

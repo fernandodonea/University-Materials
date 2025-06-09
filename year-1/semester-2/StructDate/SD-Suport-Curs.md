@@ -43,26 +43,24 @@
 - [[RMQ#Sparse table|sparse tables]]
 - [[RMQ#Hibrid|hybrid aproach]]
 
-11. Cartesian Tree
+11. [[Cartesian-Tree|Cartesian Tree]]
 
-12. The Method of Four Russians
+12. [[The Fischer-Heun Structure]]
 
-13. The Fischer-Heun Structure
+13. [[sd_Curs-8.pdf#page=2|Alegerea Medianei în Ο(n)]]
+-  [[sd_Curs-8.pdf#page=2|algoritm aleator]]
+- [[sd_Curs-8.pdf#page=5|algoritm determinist]]
 
-14. Alegerea Medianei în Ο(n)
-- algoritm aleator
-- algoritm determinist
+14. [[sd_Curs-9.pdf|Coduri Huffman]]
 
-15. Coduri Huffman
+15. Pattern Strings
 
-16. Pattern Strings
+16. [[Trie]]
 
-17. Trie
+17. Suffix Trie
 
-18. Suffix Trie
+18. Patricia Trie
 
-19. Patricia Trie
+19. Suffix Arrays
 
-20. Suffix Arrays
-
-21. Longest Common Extension
+20. Longest Common Extension

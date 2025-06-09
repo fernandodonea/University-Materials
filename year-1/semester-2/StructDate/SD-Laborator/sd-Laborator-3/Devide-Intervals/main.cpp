@@ -1,8 +1,8 @@
-#include <fstream>
 #include <iostream>
+#include <vector>
 using namespace std;
-ifstream fin("interclasari.in");
-ofstream fout("interclasari.out");
+class Solution {
+public:
 
 
 int H[20000001];
@@ -72,31 +72,23 @@ void stergeMin()
     sz--;
     coborare(1);
 }
+int minGroups(vector<vector<int>>& intervals) {
+    // Sortam intervalele după început
+    sort(intervals.begin(), intervals.end());
+    sz = 0; // resetăm heap-ul
 
-int main()
-{
-    int k;
-    fin>>k;
-
-    int n=0;
-    //parcurgem echipele
-    for(int i=1;i<=k;i++)
-    {
-        int m;
-        fin>>m;
-        n+=m;
-
-        for(int i=1;i<=m;i++)
-        {
-            int poza;
-            fin>>poza;
-            inserare(poza);
+    for (auto& interval : intervals) {
+        // Dacă există un grup care se termină înainte de intervalul curent, 
+        // îl reutilizăm
+        if (sz > 0 && minim() < interval[0]) {
+            stergeMin();
         }
+        // Adaugă capătul intervalului curent în heap (ca grup nou sau actualizat)
+        inserare(interval[1]);
     }
-    fout<<n<<endl;
-    for(int i=1;i<=n;i++)
-    {
-        fout<<minim()<<" ";
-        stergeMin();
-    }
+    return sz; // numărul minim de grupuri
 }
+
+
+
+};

@@ -1,12 +1,10 @@
-#include <fstream>
 #include <iostream>
 using namespace std;
-ifstream fin("interclasari.in");
-ofstream fout("interclasari.out");
 
 
-int H[20000001];
-int sz;
+int H[1000001];
+int sz=0;
+
 
 int parinte(int i)
 {
@@ -26,7 +24,6 @@ int minim()
     return H[1];
 }
 
-
 void urcare(int pos)
 {
     while(pos>1 && H[pos]<H[parinte(pos)])
@@ -43,6 +40,7 @@ void inserare(int x)
 }
 
 
+
 void coborare(int pos)
 {
     while(true)
@@ -50,8 +48,8 @@ void coborare(int pos)
         //verificam daca e frunza
         if(fiu_stang(pos)>sz)
             break;
-        
-        //verificam care dintre fii este mai mic
+
+        //verificam care fiu este mai mic
         int next_pos=fiu_stang(pos);
         if(fiu_drept(pos)<=sz && H[fiu_drept(pos)]<H[next_pos])
         {
@@ -63,7 +61,10 @@ void coborare(int pos)
             swap(H[pos],H[next_pos]);
             pos=next_pos;
         }
-        else break;
+        else 
+        {
+            break;
+        }
     }
 }
 void stergeMin()
@@ -73,30 +74,42 @@ void stergeMin()
     coborare(1);
 }
 
+
 int main()
 {
-    int k;
-    fin>>k;
+    int n,k;
+    cin>>n>>k;
 
-    int n=0;
-    //parcurgem echipele
+    int A,B,C,D;
+    cin>>A>>B>>C>>D;
+
+    inserare(A);
+
+    int prev=A;
+    for(int i=2;i<=n;i++)
+    {
+        long long x=(B*prev+C)%D;
+        
+        if(i<=k)
+        {
+            inserare(x);
+        }
+        else
+        {
+            if(x>minim())
+            {
+                stergeMin();
+                inserare(x);
+            }
+        }
+
+        prev=x;
+    }
     for(int i=1;i<=k;i++)
     {
-        int m;
-        fin>>m;
-        n+=m;
-
-        for(int i=1;i<=m;i++)
-        {
-            int poza;
-            fin>>poza;
-            inserare(poza);
-        }
-    }
-    fout<<n<<endl;
-    for(int i=1;i<=n;i++)
-    {
-        fout<<minim()<<" ";
+        cout<<minim()<<" ";
         stergeMin();
     }
+
+
 }

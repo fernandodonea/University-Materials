@@ -1,12 +1,8 @@
-#include <fstream>
 #include <iostream>
 using namespace std;
-ifstream fin("interclasari.in");
-ofstream fout("interclasari.out");
 
-
-int H[20000001];
-int sz;
+int H[1000];
+int sz=0;
 
 int parinte(int i)
 {
@@ -21,15 +17,10 @@ int fiu_drept(int i)
     return 2*i+1;
 }
 
-int minim()
-{
-    return H[1];
-}
-
 
 void urcare(int pos)
 {
-    while(pos>1 && H[pos]<H[parinte(pos)])
+    while(pos>=1 && H[pos]<H[parinte(pos)])
     {
         swap(H[pos],H[parinte(pos)]);
         pos=parinte(pos);
@@ -42,6 +33,10 @@ void inserare(int x)
     urcare(sz);
 }
 
+int minim()
+{
+    return H[1];
+}
 
 void coborare(int pos)
 {
@@ -51,21 +46,25 @@ void coborare(int pos)
         if(fiu_stang(pos)>sz)
             break;
         
-        //verificam care dintre fii este mai mic
+        //trebuie sa dam swap cu fiul cel mai mic
+        //nodul poate avea 2 fii (sigur are stang)
+
         int next_pos=fiu_stang(pos);
         if(fiu_drept(pos)<=sz && H[fiu_drept(pos)]<H[next_pos])
-        {
             next_pos=fiu_drept(pos);
-        }
 
         if(H[pos]>H[next_pos])
         {
             swap(H[pos],H[next_pos]);
             pos=next_pos;
         }
-        else break;
+        else
+        {
+            break;
+        }
     }
 }
+
 void stergeMin()
 {
     swap(H[1],H[sz]);
@@ -73,30 +72,29 @@ void stergeMin()
     coborare(1);
 }
 
-int main()
+void HeapSort(int n,int v[])
 {
-    int k;
-    fin>>k;
-
-    int n=0;
-    //parcurgem echipele
-    for(int i=1;i<=k;i++)
-    {
-        int m;
-        fin>>m;
-        n+=m;
-
-        for(int i=1;i<=m;i++)
-        {
-            int poza;
-            fin>>poza;
-            inserare(poza);
-        }
-    }
-    fout<<n<<endl;
+    sz=0;
     for(int i=1;i<=n;i++)
     {
-        fout<<minim()<<" ";
+        inserare(v[i]);
+    }
+    for(int i=1;i<=n;i++)
+    {
+        cout<<minim()<<" ";
         stergeMin();
     }
+}
+
+int main()
+{
+    int n;
+    cout<<"n=";cin>>n;
+    int v[n+2];
+    for(int i=1;i<=n;i++)
+    {
+        cin>>v[i];
+    }
+    HeapSort(n,v);
+
 }

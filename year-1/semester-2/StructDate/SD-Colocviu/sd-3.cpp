@@ -12,6 +12,8 @@ int distanta(int i, int j)
 {
     int s=1;
 
+    //pentru fiecare directe, daca depasim minimul adica K ne oprim
+
     //verificam in jos
     int down=i;
 
@@ -72,8 +74,13 @@ int main()
         }
     }
 
+    //maximul posibil al unui bec este de 4*k+1 
+    // (fiecare directie*k + pozitia sa)
     int maxim=4*k+1;
     int sol=-1;
+    
+    //daca un bec are valoarea maxima posibila, oprim (nu mai are sens sa cautam)
+    
     for(int i=1;i<=n && sol!=maxim;i++)
     {
         for(int j=1;j<=m && sol!=maxim;j++)

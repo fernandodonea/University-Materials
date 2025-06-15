@@ -13,6 +13,7 @@ prof: A.M. Teleman
 ####  Referinte:
 
 [Manual GeomTrig clasa a IX-a 1980, K.Teleman](http://manualul.info/Geom_IX/GeomTrig_IX_1980.pdf)
+
 [Manual GeomTrig clasa a X-a 1979, K.Teleman](http://manualul.info/Geom_X/GeomTrig_1979.pdf)
 
 [Clasificarea metrica a conicelor quadricelor](https://www.math.uaic.ro/~oanacon/GE/fisiere/cursuri/Curs-5-Clasificarea%20metrica%20a%20cuadricelor.pdf)

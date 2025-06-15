@@ -8,7 +8,7 @@ prof: A.M. Teleman
 4. Pentru ce valori ale lui n există comutativitate în O(n) și S(n)
 5. Conice 
 6. Cuadrice
-
+7. Axiomele geometriei euclidiene plane traduse in limbaj de teorie a multimilor
 
 ####  Referinte:
 

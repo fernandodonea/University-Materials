@@ -1,3 +1,5 @@
+# Referate Geometrie
+
 prof: A.M. Teleman
 
 1. Axiomele geometriei euclidiene bidimensionale
@@ -5,10 +7,10 @@ prof: A.M. Teleman
 3. Concepte de bază în geometrie (vectori, spații, schimbări de bază)
 4. Pentru ce valori ale lui n există comutativitate în O(n) și S(n)
 5. Conice 
-6. cuadrice
+6. Cuadrice
 
 
-Referinte:
+####  Referinte:
 
 [Manual GeomTrig clasa a IX-a 1980, K.Teleman](http://manualul.info/Geom_IX/GeomTrig_IX_1980.pdf)
 [Manual GeomTrig clasa a X-a 1979, K.Teleman](http://manualul.info/Geom_X/GeomTrig_1979.pdf)

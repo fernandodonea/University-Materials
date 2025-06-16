@@ -9,6 +9,7 @@ prof: A.M. Teleman
 5. Conice 
 6. Cuadrice
 7. Axiomele geometriei euclidiene plane traduse in limbaj de teorie a multimilor
+8. Pentru n=2, n=3, rescrieti teorema de clasificare a hipercuadricelor si treceti in revista toate clasele conform acestei teoreme de clasificare +desen. 
 
 ####  Referinte:
 

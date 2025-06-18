@@ -4,14 +4,17 @@ prof: A.M. Teleman
 
 1. Axiomele geometriei euclidiene bidimensionale
 2. Axiomele geometriei euclidiene tridimensionale
-3. Concepte de bază în geometrie (vectori, spații, schimbări de bază)
+3. Concepte de bază în geometrie (vectori, spații, schimbări de bază) ->**subspatii afine** si reprezentarea prin **ecuatii si siteme de acuatii**
 4. Pentru ce valori ale lui n există comutativitate în O(n) și S(n)
-5. Conice 
-6. Cuadrice
+5. Conice ->**desene** si **invarianti**
+6. Cuadrice ->**desene** si **invarianti**
 7. Axiomele geometriei euclidiene plane traduse in limbaj de teorie a multimilor
 8. Pentru n=2, n=3, rescrieti teorema de clasificare a hipercuadricelor si treceti in revista toate clasele conform acestei teoreme de clasificare +desen. 
 
-####  Referinte:
+Extra:
+- rezumate curs
+- probleme curs
+####  Bibliografie:
 
 [Manual GeomTrig clasa a IX-a 1980, K.Teleman](http://manualul.info/Geom_IX/GeomTrig_IX_1980.pdf)
 

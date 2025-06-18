@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jocuri de Paritate - 3 Exemple Progresive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .example-section {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid #FFD700;
+        }
+
+        .example-title {
+            font-size: 1.8em;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .difficulty {
+            text-align: center;
+            padding: 10px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .easy { background: linear-gradient(135deg, #4CAF50, #66BB6A); }
+        .medium { background: linear-gradient(135deg, #FF9800, #FFB74D); }
+        .hard { background: linear-gradient(135deg, #F44336, #EF5350); }
+
+        .game-area {
+            position: relative;
+            height: 300px;
+            margin: 30px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .city {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            border: 4px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            margin: 0 30px;
+        }
+
+        .city.blue {
+            background: linear-gradient(135deg, #4FC3F7, #29B6F6);
+            color: white;
+        }
+
+        .city.green {
+            background: linear-gradient(135deg, #66BB6A, #4CAF50);
+            color: white;
+        }
+
+        .city.current {
+            transform: scale(1.2);
+            border-color: #FFD700;
+            box-shadow: 0 0 30px #FFD700;
+        }
+
+        .city.infinite {
+            border-color: #FF1744;
+            border-width: 6px;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px #FF1744; }
+            50% { box-shadow: 0 0 40px #FF1744; }
+        }
+
+        .priority {
+            position: absolute;
+            top: -15px;
+            background: #FF4757;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px solid white;
+        }
+
+        .priority.even {
+            background: #2ED573;
+        }
+
+        .arrow {
+            font-size: 40px;
+            color: #FFD700;
+            margin: 0 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4FC3F7, #29B6F6);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+
+        .btn.reset {
+            background: linear-gradient(135deg, #9E9E9E, #757575);
+        }
+
+        .explanation-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #FFD700;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #4FC3F7;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #FF6B6B, #FF5252);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .result-box.blue {
+            background: linear-gradient(135deg, #4FC3F7, #29B6F6);
+        }
+
+        .result-box.green {
+            background: linear-gradient(135deg, #66BB6A, #4CAF50);
+        }
+
+        .path-display {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #FFD700;
+            margin: 15px 0;
+        }
+
+        .analysis {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .key-insight {
+            background: linear-gradient(135deg, #9C27B0, #AB47BC);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Example 2 specific */
+        .game-area-2 {
+            height: 400px;
+        }
+
+        .example2-layout {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .city-positioned {
+            position: absolute;
+        }
+
+        #ex2-A { top: 50%; left: 10%; transform: translateY(-50%); }
+        #ex2-B { top: 20%; left: 50%; transform: translateX(-50%); }
+        #ex2-C { top: 80%; left: 50%; transform: translateX(-50%); }
+
+        /* Example 3 specific */
+        .game-area-3 {
+            height: 450px;
+        }
+
+        .example3-layout {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        #ex3-A { top: 50%; left: 5%; transform: translateY(-50%); }
+        #ex3-B { top: 20%; left: 35%; transform: translateX(-50%); }
+        #ex3-C { top: 80%; left: 35%; transform: translateX(-50%); }
+        #ex3-D { top: 50%; left: 70%; transform: translateX(-50%); }
+        #ex3-E { top: 50%; left: 95%; transform: translateX(-50%); }
+
+        .choice-highlight {
+            background: rgba(255, 215, 0, 0.3);
+            border: 2px dashed #FFD700;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .convention-note {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid #FFD700;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Jocuri de Paritate - 3 Exemple Progresive</h1>
+
+        <div class="convention-note">
+            📋 <strong>CONVENȚIA FOLOSITĂ:</strong><br>
+            • Prioritate IMPAR → 🟢 Jucătorul 1 (Verde/Dreptunghiuri) câștigă<br>
+            • Prioritate PAR → 🔵 Jucătorul 0 (Albastru/Cercuri) câștigă
+        </div>
+
+        <!-- EXEMPLUL 1 - FOARTE SIMPLU -->
+        <div class="example-section">
+            <div class="example-title">EXEMPLUL 1: Cel mai simplu posibil</div>
+            <div class="difficulty easy">🟢 UȘOR - Nu ai nicio alegere</div>
+
+            <div class="game-area">
+                <div class="city blue current" id="ex1-A">
+                    <div class="priority">1</div>
+                    A
+                </div>
+                <div class="arrow">↔</div>
+                <div class="city green" id="ex1-B">
+                    <div class="priority even">2</div>
+                    B
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn" onclick="simulateExample1()">▶️ Simulează Jocul</button>
+                <button class="btn reset" onclick="resetExample1()">🔄 Resetează</button>
+            </div>
+
+            <div class="path-display" id="path1">Calea: Apasă pentru a simula</div>
+
+            <div class="explanation-box">
+                <h3>🧠 Explicația pas cu pas:</h3>
+                <div class="step">
+                    <strong>Pas 1:</strong> Începem în A (prioritate 1 - IMPAR)
+                    <br><small>Echipa albastră controlează A, dar nu are decât o opțiune: să meargă la B</small>
+                </div>
+                <div class="step">
+                    <strong>Pas 2:</strong> Ajungem în B (prioritate 2 - PAR)
+                    <br><small>Echipa verde controlează B, dar nu are decât o opțiune: să meargă înapoi la A</small>
+                </div>
+                <div class="step">
+                    <strong>Pas 3:</strong> Iar în A, iar în B, iar în A... LA INFINIT!
+                    <br><small>Calea: A → B → A → B → A → B → ...</small>
+                </div>
+            </div>
+
+            <div class="analysis">
+                <h4>🔍 Analiza finală:</h4>
+                <p><strong>Orașe vizitate FINIT:</strong> Niciunul (toate sunt vizitate infinit)</p>
+                <p><strong>Orașe vizitate INFINIT:</strong> A(1) și B(2)</p>
+                <p><strong>Prioritățile infinite:</strong> {1, 2}</p>
+                <p><strong>Prioritatea maximă:</strong> max{1, 2} = 2</p>
+                <p><strong>Paritatea lui 2:</strong> PAR</p>
+            </div>
+
+            <div class="result-box blue" id="result1" style="display: none;">
+                🔵 <strong>JUCĂTORUL 0 (ALBASTRU) CÂȘTIGĂ!</strong><br>
+                Pentru că 2 (prioritatea maximă vizitată infinit) este PAR
+            </div>
+
+            <div class="key-insight">
+                💡 <strong>Concluzia importantă:</strong> În acest exemplu nu contează strategia - rezultatul este determinat de structura grafului!
+            </div>
+        </div>
+
+        <!-- EXEMPLUL 2 - MEDIU -->
+        <div class="example-section">
+            <div class="example-title">EXEMPLUL 2: O alegere importantă</div>
+            <div class="difficulty medium">🟡 MEDIU - O decizie strategică</div>
+
+            <div class="game-area game-area-2">
+                <div class="example2-layout">
+                    <div class="city blue current city-positioned" id="ex2-A">
+                        <div class="priority">3</div>
+                        A
+                    </div>
+                    <div class="city green city-positioned" id="ex2-B">
+                        <div class="priority even">4</div>
+                        B
+                    </div>
+                    <div class="city green city-positioned" id="ex2-C">
+                        <div class="priority even">2</div>
+                        C
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn" onclick="chooseB()">➡️ Alege B (Mai sigur)</button>
+                <button class="btn" onclick="chooseC()">⬇️ Alege C (Risc mare)</button>
+                <button class="btn reset" onclick="resetExample2()">🔄 Resetează</button>
+            </div>
+
+            <div class="path-display" id="path2">Calea: Alege o opțiune mai sus</div>
+
+            <div class="explanation-box">
+                <h3>🧠 Explicația situației:</h3>
+                <div class="choice-highlight">
+                    <strong>Din A, echipa albastră POATE ALEGE:</strong>
+                    <br>• <strong>Opțiunea 1:</strong> A → B (prioritate 4 - PAR)
+                    <br>• <strong>Opțiunea 2:</strong> A → C (prioritate 2 - PAR)
+                </div>
+                <div class="step">
+                    <strong>Structura grafului:</strong>
+                    <br>• A poate merge la B sau C
+                    <br>• B poate merge doar înapoi la A (B → A)
+                    <br>• C poate merge doar înapoi la A (C → A)
+                </div>
+                <div class="step">
+                    <strong>Rezultatul fiecărei alegeri:</strong>
+                    <br>• <strong>Dacă alegi B:</strong> A → B → A → B → ... (ciclu infinit cu priorități {3, 4})
+                    <br>• <strong>Dacă alegi C:</strong> A → C → A → C → ... (ciclu infinit cu priorități {3, 2})
+                </div>
+            </div>
+
+            <div class="analysis" id="analysis2" style="display: none;">
+                <h4>🔍 Analiza alegerii tale:</h4>
+                <div id="choice-analysis"></div>
+            </div>
+
+            <div class="result-box" id="result2" style="display: none;"></div>
+
+            <div class="key-insight">
+                💡 <strong>Concluzia:</strong> Strategia schimbă complet câștigătorul! Albastru trebuie să aleagă B pentru a câștiga
+            </div>
+        </div>
+
+        <!-- EXEMPLUL 3 - COMPLEX -->
+        <div class="example-section">
+            <div class="example-title">EXEMPLUL 3: Strategie complexă</div>
+            <div class="difficulty hard">🔴 DIFICIL - Strategia determină câștigătorul</div>
+
+            <div class="game-area game-area-3">
+                <div class="example3-layout">
+                    <div class="city blue current city-positioned" id="ex3-A">
+                        <div class="priority">1</div>
+                        A
+                    </div>
+                    <div class="city green city-positioned" id="ex3-B">
+                        <div class="priority even">6</div>
+                        B
+                    </div>
+                    <div class="city green city-positioned" id="ex3-C">
+                        <div class="priority">3</div>
+                        C
+                    </div>
+                    <div class="city blue city-positioned" id="ex3-D">
+                        <div class="priority even">2</div>
+                        D
+                    </div>
+                    <div class="city blue city-positioned" id="ex3-E">
+                        <div class="priority even">0</div>
+                        E
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn" onclick="chooseStrategy1()">⬆️ Strategia 1: A → B (Periculos!)</button>
+                <button class="btn" onclick="chooseStrategy2()">⬇️ Strategia 2: A → C (Inteligent!)</button>
+                <button class="btn reset" onclick="resetExample3()">🔄 Resetează</button>
+            </div>
+
+            <div class="path-display" id="path3">Calea: Alege o strategie mai sus</div>
+
+            <div class="explanation-box">
+                <h3>🧠 Explicația complexității:</h3>
+                <div class="choice-highlight">
+                    <strong>Structura grafului:</strong>
+                    <br>• A poate merge la B sau C
+                    <br>• B poate merge la A (B → A) - deci B → A → B → A...
+                    <br>• C poate merge la D (C → D)
+                    <br>• D poate merge la E (D → E)
+                    <br>• E poate merge la D (E → D) - deci E → D → E → D...
+                </div>
+
+                <div class="step">
+                    <strong>Strategia 1 (A → B):</strong>
+                    <br>• Calea: A → B → A → B → ... (ciclu infinit)
+                    <br>• Priorități infinite: {1, 6}
+                    <br>• Max = 6 (PAR) → 🔵 Albastru câștigă
+                </div>
+
+                <div class="step">
+                    <strong>Strategia 2 (A → C):</strong>
+                    <br>• Calea: A → C → D → E → D → E → ... 
+                    <br>• A și C sunt vizitate FINIT (doar o dată)
+                    <br>• D și E sunt vizitate INFINIT (ciclul D ↔ E)
+                    <br>• Priorități infinite: {2, 0}
+                    <br>• Max = 2 (PAR) → 🔵 Albastru câștigă din nou!
+                </div>
+            </div>
+
+            <div class="analysis" id="analysis3" style="display: none;">
+                <h4>🔍 Analiza strategiei alese:</h4>
+                <div id="strategy-analysis"></div>
+            </div>
+
+            <div class="result-box blue" id="result3" style="display: none;"></div>
+
+            <div class="key-insight">
+                💡 <strong>Surpriza:</strong> În acest caz, ambele strategii duc la victoria albastră, dar cu priorități maxime diferite! Uneori strategia poate schimba complet câștigătorul!
+            </div>
+        </div>
+
+        <div class="key-insight" style="font-size: 20px;">
+            🎯 <strong>CONCLUZIA FINALĂ:</strong><br>
+            1. Exemplul 1: Nu ai alegere - rezultatul e determinat<br>
+            2. Exemplul 2: Ai alegere, și schimbă câștigătorul<br>
+            3. Exemplul 3: Strategia poate determina total cine câștigă!
+        </div>
+    </div>
+
+    <script>
+        function simulateExample1() {
+            const pathDiv = document.getElementById('path1');
+            const resultDiv = document.getElementById('result1');
+            const cityA = document.getElementById('ex1-A');
+            const cityB = document.getElementById('ex1-B');
+            
+            let path = 'A';
+            let position = 'A';
+            let step = 0;
+            
+            const interval = setInterval(() => {
+                step++;
+                
+                // Toggle position
+                position = position === 'A' ? 'B' : 'A';
+                path += ' → ' + position;
+                
+                // Update visual
+                cityA.classList.toggle('current');
+                cityB.classList.toggle('current');
+                
+                // Update path display
+                if (step <= 8) {
+                    pathDiv.textContent = `Calea: ${path}`;
+                } else {
+                    pathDiv.textContent = `Calea: ${path} → ... (continuă la infinit)`;
+                    
+                    // Mark infinite cities
+                    cityA.classList.add('infinite');
+                    cityB.classList.add('infinite');
+                    
+                    // Show result
+                    resultDiv.style.display = 'block';
+                    clearInterval(interval);
+                }
+            }, 800);
+        }
+
+        function resetExample1() {
+            document.getElementById('path1').textContent = 'Calea: Apasă pentru a simula';
+            document.getElementById('result1').style.display = 'none';
+            document.getElementById('ex1-A').className = 'city blue current';
+            document.getElementById('ex1-B').className = 'city green';
+        }
+
+        function chooseB() {
+            const pathDiv = document.getElementById('path2');
+            const analysisDiv = document.getElementById('analysis2');
+            const choiceDiv = document.getElementById('choice-analysis');
+            const resultDiv = document.getElementById('result2');
+            
+            pathDiv.textContent = 'Calea: A → B → A → B → A → B → ... (ciclu infinit)';
+            
+            choiceDiv.innerHTML = `
+                <p><strong>Ai ales strategia A → B</strong></p>
+                <p><strong>Orașe vizitate INFINIT:</strong> A(3) și B(4)</p>
+                <p><strong>Prioritățile infinite:</strong> {3, 4}</p>
+                <p><strong>Prioritatea maximă:</strong> max{3, 4} = 4</p>
+                <p><strong>Paritatea lui 4:</strong> PAR</p>
+            `;
+            
+            analysisDiv.style.display = 'block';
+            resultDiv.innerHTML = '🔵 <strong>JUCĂTORUL 0 (ALBASTRU) CÂȘTIGĂ!</strong><br>Prioritatea maximă infinită: 4 (PAR)';
+            resultDiv.className = 'result-box blue';
+            resultDiv.style.display = 'block';
+        }
+
+        function chooseC() {
+            const pathDiv = document.getElementById('path2');
+            const analysisDiv = document.getElementById('analysis2');
+            const choiceDiv = document.getElementById('choice-analysis');
+            const resultDiv = document.getElementById('result2');
+            
+            pathDiv.textContent = 'Calea: A → C → A → C → A → C → ... (ciclu infinit)';
+            
+            choiceDiv.innerHTML = `
+                <p><strong>Ai ales strategia A → C</strong></p>
+                <p><strong>Orașe vizitate INFINIT:</strong> A(3) și C(2)</p>
+                <p><strong>Prioritățile infinite:</strong> {3, 2}</p>
+                <p><strong>Prioritatea maximă:</strong> max{3, 2} = 3</p>
+                <p><strong>Paritatea lui 3:</strong> IMPAR</p>
+            `;
+            
+            analysisDiv.style.display = 'block';
+            resultDiv.innerHTML = '🟢 <strong>JUCĂTORUL 1 (VERDE) CÂȘTIGĂ!</strong><br>Prioritatea maximă infinită: 3 (IMPAR)';
+            resultDiv.className = 'result-box green';
+            resultDiv.style.display = 'block';
+        }
+
+        function resetExample2() {
+            document.getElementById('path2').textContent = 'Calea: Alege o opțiune mai sus';
+            document.getElementById('analysis2').style.display = 'none';
+            document.getElementById('result2').style.display = 'none';
+        }
+
+        function chooseStrategy1() {
+            const pathDiv = document.getElementById('path3');
+            const analysisDiv = document.getElementById('analysis3');
+            const strategyDiv = document.getElementById('strategy-analysis');
+            const resultDiv = document.getElementById('result3');
+            
+            pathDiv.textContent = 'Calea: A → B → A → B → A → B → ... (ciclu infinit)';
+            
+            strategyDiv.innerHTML = `
+                <p><strong>Strategia 1: A → B (Riscantă!)</strong></p>
+                <p><strong>Ce se întâmplă:</strong> Rămâi în ciclul A ↔ B pentru totdeauna</p>
+                <p><strong>Orașe FINITE:</strong> Niciunul</p>
+                <p><strong>Orașe INFINITE:</strong> A(1), B(6)</p>
+                <p><strong>Prioritățile infinite:</strong> {1, 6}</p>
+                <p><strong>Prioritatea maximă:</strong> max{1, 6} = 6 (PAR)</p>
+                <p><strong>🎯 Riscant pentru că prioritatea 6 e foarte mare!</strong></p>
+            `;
+            
+            analysisDiv.style.display = 'block';
+            resultDiv.innerHTML = '🔵 <strong>JUCĂTORUL 0 (ALBASTRU) CÂȘTIGĂ!</strong><br>Prioritatea maximă infinită: 6 (PAR)<br><small>Câștig cu risc mare!</small>';
+            resultDiv.style.display = 'block';
+        }
+
+        function chooseStrategy2() {
+            const pathDiv = document.getElementById('path3');
+            const analysisDiv = document.getElementById('analysis3');
+            const strategyDiv = document.getElementById('strategy-analysis');
+            const resultDiv = document.getElementById('result3');
+            
+            pathDiv.textContent = 'Calea: A → C → D → E → D → E → D → E → ... (E ↔ D infinit)';
+            
+            strategyDiv.innerHTML = `
+                <p><strong>Strategia 2: A → C (Inteligentă!)</strong></p>
+                <p><strong>Ce se întâmplă:</strong> "Scapi" din A și te stabilizezi în ciclul D ↔ E</p>
+                <p><strong>Orașe FINITE:</strong> A(1), C(3) - le vizitezi o singură dată</p>
+                <p><strong>Orașe INFINITE:</strong> D(2), E(0) - ciclul infinit final</p>
+                <p><strong>Prioritățile infinite:</strong> {2, 0}</p>
+                <p><strong>Prioritatea maximă:</strong> max{2, 0} = 2 (PAR)</p>
+                <p><strong>🎯 Sigur și eficient - prioritate maximă mică!</strong></p>
+            `;
+            
+            analysisDiv.style.display = 'block';
+            resultDiv.innerHTML = '🔵 <strong>JUCĂTORUL 0 (ALBASTRU) CÂȘTIGĂ!</strong><br>Prioritatea maximă infinită: 2 (PAR)<br><small>Câștig sigur și eficient!</small>';
+            resultDiv.style.display = 'block';
+        }
+
+        function resetExample3() {
+            document.getElementById('path3').textContent = 'Calea: Alege o strategie mai sus';
+            document.getElementById('analysis3').style.display = 'none';
+            document.getElementById('result3').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

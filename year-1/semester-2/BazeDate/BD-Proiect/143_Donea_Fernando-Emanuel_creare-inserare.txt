@@ -101,6 +101,7 @@ NOCYCLE;
 DROP TABLE PLAYLIST CASCADE CONSTRAINTS;
 DROP TABLE LINEUP CASCADE CONSTRAINTS;
 DROP TABLE COMANDA_ALBUME CASCADE CONSTRAINTS;
+DROP TABLE COMANDA_CD_PERSONALIZAT CASCADE CONSTRAINTS;
 DROP TABLE WISHLIST_ALBUM CASCADE CONSTRAINTS;
 DROP TABLE ALBUM_GEN_MUZICAL CASCADE CONSTRAINTS;
 DROP TABLE BILET CASCADE CONSTRAINTS;
@@ -184,6 +185,7 @@ CREATE TABLE CD_PERSONALIZAT(
     numar_piese NUMBER NOT NULL,
 
     FOREIGN KEY (utilizator_id) REFERENCES UTILIZATOR(utilizator_id),
+
     CONSTRAINT ck_cd_pers_piese CHECK (numar_piese BETWEEN 5 AND 30)
 );
 
@@ -197,11 +199,13 @@ CREATE TABLE COMANDA (
     metoda_plata VARCHAR2(50) NOT NULL,
     cost_total NUMBER(10,2) NOT NULL,
     cost_transport NUMBER(5,2) NOT NULL,
+    tip_comanda VARCHAR2(20) DEFAULT 'STANDARD' NOT NULL,
 
     FOREIGN KEY (utilizator_id) REFERENCES UTILIZATOR(utilizator_id),
 
     CONSTRAINT ck_comanda_status CHECK (status IN ('Plasată', 'Procesată', 'Expediată', 'Livrată', 'Anulată')),
-    CONSTRAINT ck_comanda_metoda_plata CHECK (metoda_plata IN ('Card', 'Ramburs','Pe caiet'))
+    CONSTRAINT ck_comanda_metoda_plata CHECK (metoda_plata IN ('Card', 'Ramburs','Pe caiet')),
+    CONSTRAINT ck_comanda_tip CHECK (tip_comanda IN ('STANDARD', 'PERSONALIZAT', 'MIXT'))  --adaugat dupa feedback
 );
 
 
@@ -293,6 +297,16 @@ CREATE TABLE COMANDA_ALBUME (
     PRIMARY KEY (comanda_id, album_id),
     FOREIGN KEY (comanda_id) REFERENCES COMANDA(comanda_id),
     FOREIGN KEY (album_id) REFERENCES ALBUM(album_id)
+);
+
+CREATE TABLE COMANDA_CD_PERSONALIZAT (
+    comanda_id NUMBER,
+    cd_pers_id NUMBER,
+    cantitate NUMBER(3) DEFAULT 1 NOT NULL,
+
+    PRIMARY KEY (comanda_id, cd_pers_id),
+    FOREIGN KEY (comanda_id) REFERENCES COMANDA(comanda_id),
+    FOREIGN KEY (cd_pers_id) REFERENCES CD_PERSONALIZAT(cd_pers_id)
 );
 
 
@@ -526,20 +540,20 @@ VALUES (seq_cd_pers.NEXTVAL, 5, 'Muzica de cartier', TO_DATE('2024-05-14', 'YYYY
 
 ----------Inserarea datelor în tabela COMANDA----------
 
-INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport)
-VALUES (seq_comanda.NEXTVAL, 1, TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Livrată', 'Str. Lalelelor nr. 23, Roman, Neamt, 617466', 'Card', 104.98, 15.00);
+INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport, tip_comanda)
+VALUES (seq_comanda.NEXTVAL, 1, TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Livrată', 'Str. Lalelelor nr. 23, Roman, Neamt, 617466', 'Card', 129.93, 15.00, 'MIXT');
 
-INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport)
-VALUES (seq_comanda.NEXTVAL, 2, TO_DATE('2021-05-02', 'YYYY-MM-DD'), 'Procesată', 'Str. Libertății, nr. 15, Cluj-Napoca, Cluj, 400000', 'Ramburs', 64.99, 15.00);
+INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport, tip_comanda)
+VALUES (seq_comanda.NEXTVAL, 2, TO_DATE('2021-05-02', 'YYYY-MM-DD'), 'Procesată', 'Str. Libertății, nr. 15, Cluj-Napoca, Cluj, 400000', 'Ramburs', 94.94, 15.00, 'MIXT');
 
-INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport)
-VALUES (seq_comanda.NEXTVAL, 3, TO_DATE('2020-12-03', 'YYYY-MM-DD'), 'Expediată', 'Spl. Independentei, nr. 68, Bucuresti, Bucuresti, 700000', 'Card', 93.98, 15.00);
+INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport, tip_comanda)
+VALUES (seq_comanda.NEXTVAL, 3, TO_DATE('2020-12-03', 'YYYY-MM-DD'), 'Expediată', 'Spl. Independentei, nr. 68, Bucuresti, Bucuresti, 700000', 'Card', 93.98, 15.00, 'STANDARD');
 
-INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport)
-VALUES (seq_comanda.NEXTVAL, 4, TO_DATE('2024-08-23', 'YYYY-MM-DD'), 'Plasată', 'Str. Tudor Arghezi, nr. 23, Iasi, Iasi, 300000', 'Card', 55.98, 15.00);
+INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport, tip_comanda)
+VALUES (seq_comanda.NEXTVAL, 4, TO_DATE('2024-08-23', 'YYYY-MM-DD'), 'Plasată', 'Str. Tudor Arghezi, nr. 23, Iasi, Iasi, 300000', 'Card', 94.93, 15.00, 'MIXT');
 
-INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport)
-VALUES (seq_comanda.NEXTVAL, 5, TO_DATE('2025-05-01', 'YYYY-MM-DD'), 'Anulată', 'Str. Avram Iancu nr. 30, Brașov, Brasov, 500000', 'Ramburs', 84.94, 15.00);
+INSERT INTO COMANDA (comanda_id, utilizator_id, data_plasare, status, adresa_livrare, metoda_plata, cost_total, cost_transport, tip_comanda)
+VALUES (seq_comanda.NEXTVAL, 5, TO_DATE('2025-05-01', 'YYYY-MM-DD'), 'Anulată', 'Str. Avram Iancu nr. 30, Brașov, Brasov, 500000', 'Ramburs', 84.94, 15.00, 'STANDARD');
 
 
 
@@ -654,8 +668,8 @@ INSERT INTO ALBUM_GEN_MUZICAL (album_id, gen_id) VALUES (7, 200); -- Discovery -
 INSERT INTO ALBUM_GEN_MUZICAL (album_id, gen_id) VALUES (8, 50);  -- Hot Space - Rock
 INSERT INTO ALBUM_GEN_MUZICAL (album_id, gen_id) VALUES (9, 250); -- Master of Puppets - Heavy-Metal
 INSERT INTO ALBUM_GEN_MUZICAL (album_id, gen_id) VALUES (10, 250); -- Ride the Lightning - Heavy-Metal
-INSERT INTO ALBUM_GEN_MUZICAL (album_id, gen_id) VALUES (8, 100); -- Hot Space - Pop (acest album are elemente pop)
-INSERT INTO ALBUM_GEN_MUZICAL (album_id, gen_id) VALUES (6, 100); -- Random Access Memories - Pop (are elemente pop)
+INSERT INTO ALBUM_GEN_MUZICAL (album_id, gen_id) VALUES (8, 100); -- Hot Space - Pop
+INSERT INTO ALBUM_GEN_MUZICAL (album_id, gen_id) VALUES (6, 100); -- Random Access Memories - Pop
 
 
 
@@ -688,6 +702,25 @@ INSERT INTO COMANDA_ALBUME (comanda_id, album_id, cantitate) VALUES (1004, 9, 1)
 INSERT INTO COMANDA_ALBUME (comanda_id, album_id, cantitate) VALUES (1004, 3, 1);
 INSERT INTO COMANDA_ALBUME (comanda_id, album_id, cantitate) VALUES (1002, 8, 1);
 INSERT INTO COMANDA_ALBUME (comanda_id, album_id, cantitate) VALUES (1001, 1, 1);
+
+
+
+
+
+
+----------Inserarea datelor în tabela COMANDA_CD_PERSONALIZAT----------
+
+INSERT INTO COMANDA_CD_PERSONALIZAT (comanda_id, cd_pers_id, cantitate)
+VALUES (1000, 1, 1); -- Fernando comandă "Colecția Mea Rock"
+
+INSERT INTO COMANDA_CD_PERSONALIZAT (comanda_id, cd_pers_id, cantitate)
+VALUES (1001, 2, 1); -- Vlad comandă "Hiturile Vechi"
+
+INSERT INTO COMANDA_CD_PERSONALIZAT (comanda_id, cd_pers_id, cantitate)
+VALUES (1003, 3, 2); -- Tudor comandă "Cele Mai Bune Balade"
+
+INSERT INTO COMANDA_CD_PERSONALIZAT (comanda_id, cd_pers_id, cantitate)
+VALUES (1004, 3, 1); -- Cosmin comandă "Cele Mai Bune Balade"
 
 
 

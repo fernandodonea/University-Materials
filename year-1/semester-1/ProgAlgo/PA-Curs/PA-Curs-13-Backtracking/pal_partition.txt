@@ -1,0 +1,36 @@
+https://leetcode.com/problems/palindrome-partitioning/description/
+Indicatii: https://algo.monster/liteproblems/131 
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        def back(k):
+            if x[k-1]==n:
+                desc=[]
+                for i in range(1,k):
+                    cuv=s[x[i-1]:x[i]] #de la x[i-1] la x[i]-1
+                    desc.append(cuv)
+                rez.append(desc)
+            else:
+                for i in range(x[k-1]+1, n+1):
+                    x[k]=i
+                    if pal[x[k-1]][x[k]-1]:
+                        back(k+1)    
+                
+        n=len(s)
+        #Preprocesare: pal[i][j]=True<=> secv s[i]...s[j] este palindrom
+        pal=[[True for i in range(n)] for j in range(n)]
+        #ord de calcul- diferenta intre j si i
+        for dif in range(1,n):
+            for i in range(n-dif):
+                j=i+dif
+                if s[i]==s[j] and pal[i+1][j-1]:
+                    pal[i][j]=True
+                else:
+                    pal[i][j]=False
+        x=[0]*(n+1)
+        x[0]=0 #primul palindrom din desc incepe la poz 0
+        rez=[]
+        back(1)
+        return rez
+        
+
+        

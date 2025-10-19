@@ -1,0 +1,3 @@
+John Doe (john.doe@test.com) [16.11.2024, 10:20 AM]: ran a program on the system
+John Doe (john.doe@test.com) [16.11.2024, 12:20 PM]: started a new process Automation Task [16.11.2024, 01:20 PM]: backing up database
+Tim Doe (tim.doe@test.com) [17.11.2024, 09:32 AM]: logged into the system

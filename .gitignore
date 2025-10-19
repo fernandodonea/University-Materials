@@ -30,3 +30,128 @@
 *.exe
 *.out
 *.app
+
+# Additional executables and bundles (cross‑platform)
+# Windows executables/installers
+*.com
+*.msi
+*.msix
+*.msm
+*.msp
+
+# macOS bundles and debug symbol folders
+*.dSYM/
+
+# Many Linux/macOS executables are extensionless; keep them out of common build dirs
+# Ignore typical build/output directories entirely (but allow an optional .gitkeep to keep the dir in git)
+bin/**
+obj/**
+build/**
+Build/**
+dist/**
+out/**
+target/**
+Debug/**
+Release/**
+x64/**
+x86/**
+!bin/.gitkeep
+!obj/.gitkeep
+!build/.gitkeep
+!Build/.gitkeep
+!dist/.gitkeep
+!out/.gitkeep
+!target/.gitkeep
+!Debug/.gitkeep
+!Release/.gitkeep
+!x64/.gitkeep
+!x86/.gitkeep
+
+# Common default executable names
+a.out
+
+# OS metadata (not executables, but safe to ignore and commonly annoying)
+.DS_Store
+Icon?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# C/C++ extras
+# Coverage and profiling
+*.gcno
+*.gcda
+*.gcov
+gmon.out
+core
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.hypothesis/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+eggs/
+develop-eggs/
+htmlcov/
+.coverage
+.coverage.*
+.ipynb_checkpoints/
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+
+# .NET / C# / ASP.NET
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.csproj.user
+*.vcxproj.user
+TestResults/
+*.coverage
+*.coveragexml
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Haskell (Stack/Cabal)
+.stack-work/
+dist-newstyle/
+.cabal-sandbox/
+cabal.sandbox.config
+cabal.project.local
+cabal.project.local~
+*.hi
+*.dyn_hi
+*.dyn_o
+.ghc.environment.*
+.hpc/
+.hie/
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+.Rproj.user/

@@ -1,2 +1,22 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Auto detect text files and normalize to LF in repo
+* text=auto eol=lf
+
+# Treat common binary formats as binary to avoid line ending normalization
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.7z binary
+*.exe binary
+*.dll binary
+*.dylib binary
+*.so binary
+*.a binary
+*.lib binary
+*.nupkg binary
+*.snupkg binary
+*.rds binary
+*.rda binary

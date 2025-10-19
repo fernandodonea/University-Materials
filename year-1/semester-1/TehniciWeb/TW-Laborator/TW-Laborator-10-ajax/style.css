@@ -1,0 +1,32 @@
+
+#container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+#info {
+  flex: 1;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: lightblue;
+  padding: 10px;
+  
+}
+#info>*{
+  margin:20px;
+}
+
+
+
+#gallery {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  
+}
+
+
+

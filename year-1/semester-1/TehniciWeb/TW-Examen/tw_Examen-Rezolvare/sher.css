@@ -1,0 +1,93 @@
+#container
+{
+    background-color: lightblue;
+    display: grid;
+    /*fiecare coloană să aibă lățimea de 80px*/
+    grid-template-columns: 80px 80px 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px 80px 80px 80px 80px;
+
+    /*spațiul dintre linii și coloane să fie de 4px*/
+    grid-gap:4px;
+
+    padding:20px;
+}
+#container> div{ 
+    display: flex;
+    /*textul să fie centrat pe orizontală*/
+    justify-content: center;
+    align-items: center;
+
+    /*divurile să aibă padding de 26px*/
+    padding: 26px;
+
+    /*textul colorat cu negru*/
+    color:black;
+
+    /*border Indigo, punctat, de 3px*/
+    border: dashed indigo 3px;
+    
+
+}
+
+#cap{
+    background-color: #fbec5d;
+    grid-column:2/ span 2;
+    grid-row: 1/ span 2;
+
+
+}
+#ochi{
+    padding: 26px;
+    /*divul în formă de cerc nu va avea border și va avea fundal Ivory.*/
+    background-color: ivory;
+    border-radius: 50%;
+    /*se va micșora la o treime din mărimea inițială, treptat, 
+    într-o tranziție de 0.4 secunde.*/
+    transition: transform 0.4s;
+}
+
+#ochi:active{
+    background-color: crimson;
+    color:crimson;
+    transform: scale(0.3) 
+}
+#cioc{
+    background-color: DarkOrange;
+    grid-column:1/ span 1;
+    grid-row:2/ span 1;
+
+}
+#gat1{
+    background-color: #fbec5d;
+    grid-column:3/ span 1;
+    grid-row:3/ span 1;
+}
+#gat2{
+    background-color: #fbec5d;
+    grid-column:3/ span 1;
+    grid-row:4/ span 1;
+}
+#corp{
+    background-color: #fbec5d;
+    grid-column:3/span 3;
+    grid-row:5/span 2;
+}
+#picior{
+    background-color: DarkOrange;
+    grid-row: 7/span1;
+    grid-column:4/span 1;
+}
+
+@media (min-width: 330px) and (max-width: 620px) {
+    #container{
+        display:inline;
+        background-color: lightblue;
+
+    }
+    #ochi
+    {
+        /*cercul va fi micșorat la jumătate pe orizontală.*/
+        transform: scale(1,0.5);
+
+    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cinema>
+    <film>
+        <titlu limba="en">Star Wars: Episode IV - A New Hope</titlu>
+        <gen>Science Fiction</gen>
+        <regizor>George Lucas</regizor>
+        <an>1977</an>
+        <scenarist>George Lucas</scenarist>
+        <producator>Lucasfilm</producator>
+        <actor rol="principal">Mark Hamill</actor>
+        <actor rol="principal">Harrison Ford</actor>
+        <actor rol="principal">Carrie Fisher</actor>
+        <scor>8.6</scor>
+    </film>
+    <film>
+        <titlu limba="en">Titanic</titlu>
+        <gen>Romance</gen>
+        <regizor>James Cameron</regizor>
+        <an>1997</an>
+        <scenarist>James Cameron</scenarist>
+        <producator>20th Century Fox</producator>
+        <actor rol="principal">Leonardo DiCaprio</actor>
+        <actor rol="principal">Kate Winslet</actor>
+        <scor>7.8</scor>
+    </film>
+    <film>
+        <titlu limba="en">The Lord of the Rings: The Fellowship of the Ring</titlu>
+        <gen>Fantasy</gen>
+        <regizor>Peter Jackson</regizor>
+        <an>2001</an>
+        <scenarist>Fran Walsh</scenarist>
+        <producator>New Line Cinema</producator>
+        <actor rol="principal">Elijah Wood</actor>
+        <actor rol="principal">Ian McKellen</actor>
+        <actor rol="principal">Viggo Mortensen</actor>
+        <scor>8.8</scor>
+    </film>
+</cinema>

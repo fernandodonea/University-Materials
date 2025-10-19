@@ -1,0 +1,23 @@
+.p{
+  text-align: center;
+  margin: auto;
+}
+.fundal
+{
+  background-color: rgb(103,149,245);
+  color: rgb(247,206,205);
+}
+.culoarejoc1
+{
+  background-color: rgb(186,83,37);
+}
+.culoarejoc2
+{
+  background-color: rgb(75,164,47);
+
+}
+
+#tabel
+{ background-color: rgb(147,204,66);
+  color:white;
+}

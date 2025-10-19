@@ -1,0 +1,175 @@
+--------BD Laborator 4----
+
+--ex 1
+SELECT
+    E.FIRST_NAME, E.SALARY
+FROM EMPLOYEES E
+WHERE E.DEPARTMENT_ID = (
+        SELECT
+            E2.DEPARTMENT_ID
+        FROM EMPLOYEES E2
+        WHERE UPPER(E2.FIRST_NAME) = 'GATES' OR UPPER(E2.LAST_NAME) = 'GATES' AND E2.EMPLOYEE_ID <> E.EMPLOYEE_ID
+    );
+
+--ex 2
+SELECT
+    E.EMPLOYEE_ID,
+    E.LAST_NAME,
+    E.SALARY,
+    (
+        SELECT
+            M.LAST_NAME
+        FROM EMPLOYEES M
+        WHERE M.EMPLOYEE_ID=E.MANAGER_ID
+    ) "MANAGER"
+FROM EMPLOYEES E;
+
+--ex 3
+SELECT
+    *
+FROM EMPLOYEES E
+WHERE E.SALARY>=ALL(
+    SELECT E2.SALARY
+    FROM EMPLOYEES E2
+    WHERE UPPER(E2.JOB_ID) LIKE '%CLERK%' AND E2.EMPLOYEE_ID <> E.EMPLOYEE_ID
+    )
+ORDER BY E.SALARY DESC;
+
+--ex 4
+SELECT E.EMPLOYEE_ID
+FROM EMPLOYEES E
+WHERE E.COMMISSION_PCT IS NULL AND (
+        SELECT
+            E2.COMMISSION_PCT
+        FROM EMPLOYEES E2
+        WHERE E2.EMPLOYEE_ID = E.MANAGER_ID
+    ) IS NOT NULL;
+
+--ex 5
+SELECT
+    D.DEPARTMENT_NAME,
+    E.LAST_NAME
+FROM EMPLOYEES E
+JOIN DEPARTMENTS D ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+WHERE E.HIRE_DATE<=ALL(
+    SELECT
+        E2.HIRE_DATE
+    FROM EMPLOYEES E2 WHERE E2.DEPARTMENT_ID=E.DEPARTMENT_ID AND E.EMPLOYEE_ID<>E2.EMPLOYEE_ID
+    )
+ORDER BY D.DEPARTMENT_NAME;
+
+
+
+--ex 6
+SELECT
+    E.FIRST_NAME, E.DEPARTMENT_ID, E.SALARY
+FROM EMPLOYEES E
+WHERE (E.DEPARTMENT_ID, E.SALARY) IN (
+        SELECT
+            E2.DEPARTMENT_ID, E2.SALARY
+        FROM EMPLOYEES E2
+        WHERE E2.COMMISSION_PCT IS NOT NULL AND
+                E.EMPLOYEE_ID <> E2.EMPLOYEE_ID
+    );
+
+--ex 7
+SELECT
+    E.FIRST_NAME, E.SALARY,E.MANAGER_ID,
+       (
+           SELECT
+                E3.FIRST_NAME
+           FROM EMPLOYEES E3
+           WHERE E3.DEPARTMENT_ID = E.DEPARTMENT_ID AND
+                 E3.SALARY >ALL (
+                        SELECT E4.SALARY
+                        FROM EMPLOYEES E4
+                        WHERE E4.DEPARTMENT_ID = E3.DEPARTMENT_ID
+                            AND E4.EMPLOYEE_ID <> E3.EMPLOYEE_ID
+                   )
+           )
+FROM EMPLOYEES E
+WHERE E.MANAGER_ID = (
+        SELECT
+            E2.EMPLOYEE_ID
+        FROM EMPLOYEES E2
+        WHERE E2.MANAGER_ID IS NULL
+    );
+
+--ex 8
+SELECT
+    LAST_NAME, SALARY,ROWNUM
+FROM (
+    SELECT
+        LAST_NAME,SALARY
+    FROM EMPLOYEES
+    ORDER BY SALARY DESC
+     )
+WHERE ROWNUM<=7;
+
+--ex 9
+SELECT
+    E.LAST_NAME,E.SALARY
+FROM EMPLOYEES E
+WHERE E.SALARY IN (
+    SELECT
+        T.SALARY
+    FROM (
+        SELECT
+            DISTINCT SALARY
+        FROM EMPLOYEES
+        ORDER BY SALARY DESC
+         )T
+    WHERE ROWNUM<=7
+    );
+
+
+
+--EX 10
+SELECT *
+FROM EMPLOYEES E
+WHERE E.SALARY=(
+
+        SELECT
+            S.SALARY
+        FROM (
+                SELECT
+                    DISTINCT T.SALARY
+                FROM EMPLOYEES T
+                ORDER BY T.SALARY DESC
+             )S
+        WHERE ROWNUM<=7
+        MINUS
+        SELECT
+            S.SALARY
+        FROM (
+                SELECT
+                    DISTINCT T.SALARY
+                FROM EMPLOYEES T
+                ORDER BY T.SALARY DESC
+             )S
+        WHERE ROWNUM<=6
+            );
+
+
+
+
+
+SELECT *
+FROM (
+    SELECT *
+    FROM EMPLOYEES E
+    WHERE E.SALARY IN (
+        SELECT
+            T.SALARY
+        FROM (
+                SELECT DISTINCT SALARY
+                FROM EMPLOYEES
+                ORDER BY SALARY ASC
+            ) T
+        WHERE ROWNUM <= 7
+        )
+    ORDER BY E.SALARY DESC
+     )
+WHERE ROWNUM = 1;
+
+

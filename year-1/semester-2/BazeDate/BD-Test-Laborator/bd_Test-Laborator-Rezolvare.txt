@@ -1,0 +1,101 @@
+---test lab
+--NR 1
+--Donea Fernando-Emanuel 143
+
+
+
+
+
+--ex 3
+SELECT
+    CL.NUME,COUNT(A.ID_ANIMAL)
+FROM CLIENT_CENTRU CL
+JOIN CONTRACT_CENTRU CTR ON CL.ID_CLIENT = CTR.ID_CLIENT
+JOIN ANIMAL A ON CTR.ID_ANIMAL = A.ID_ANIMAL
+JOIN RASA R ON A.ID_RASA = R.ID_RASA
+GROUP BY CL.NUME,CL.ID_CLIENT
+HAVING COUNT(A.ID_ANIMAL)=(
+    --calculam cate pisici a adoptat fiecare persoana
+    --daca sunt eglae are doar pisici
+    SELECT
+        COUNT(*)
+    FROM CONTRACT_CENTRU CTR2
+    JOIN ANIMAL A2 ON CTR2.ID_ANIMAL = A2.ID_ANIMAL
+    JOIN RASA R2 ON A2.ID_RASA = R2.ID_RASA
+    WHERE lower(R2.NUME_SPECIE)='pisica' AND CTR2.ID_CLIENT=CL.ID_CLIENT
+    );
+
+
+
+
+
+
+
+
+
+--ex 1
+
+SELECT
+    CL.ID_CLIENT,CL.NUME,
+    COALESCE(SPECII.NR_SPECII,0) AS "numar de specii adoptate",
+    COALESCE(CONTRACTE.NR_CONTRACTE, 0) AS "numar contracte semnate in ult 2 ani"
+FROM CLIENT_CENTRU CL
+left JOIN (
+    --calculam numarul de specii diferite in care numele rasei contine litera a
+    SELECT
+        CTR.ID_CLIENT,
+        COUNT(DISTINCT R.NUME_SPECIE) AS NR_SPECII
+    FROM CONTRACT_CENTRU CTR
+    JOIN ANIMAL A ON CTR.ID_ANIMAL = A.ID_ANIMAL
+    JOIN RASA R ON A.ID_RASA=R.ID_RASA
+    WHERE UPPER(R.RASA) LIKE '%A%'
+   GROUP BY CTR.ID_CLIENT
+) SPECII ON CL.ID_CLIENT=SPECII.ID_CLIENT
+LEFT JOIN (
+    --numaram contractele din ultimii doi ani
+    SELECT
+        CTR.ID_CLIENT,
+        COUNT(*) AS NR_CONTRACTE
+    FROM CONTRACT_CENTRU CTR
+    WHERE CTR.DATA_SEMNARII >= ADD_MONTHS(TRUNC(SYSDATE), -24)
+GROUP BY CTR.ID_CLIENT
+) CONTRACTE ON CL.ID_CLIENT = CONTRACTE.ID_CLIENT;
+
+
+
+
+
+--ex 2
+WITH CENTRE_STRAINE AS (
+    SELECT
+        COUNT(*) as "N"
+    FROM (
+            SELECT *
+            FROM CENTRU_ADOPTIE C1
+            MINUS
+            SELECT *
+            FROM CENTRU_ADOPTIE C2
+            WHERE C2.TELEFON LIKE '40%'
+         )
+),
+TOP_RASE_2023 AS (
+    SELECT
+        R.RASA "nume rasa",
+        COUNT(CTR.ID_CONTRACT) "animale adoptate"
+    FROM RASA R
+    JOIN ANIMAL A ON R.ID_RASA=A.ID_RASA
+    JOIN CONTRACT_CENTRU CTR ON A.ID_ANIMAL=CTR.ID_ANIMAL
+    WHERE TO_CHAR(CTR.DATA_SEMNARII,'YYYY')='2023'
+    GROUP BY R.RASA
+    ORDER BY COUNT(CTR.ID_CONTRACT) DESC
+)
+SELECT
+    "nume rasa",ROWNUM
+FROM TOP_RASE_2023
+WHERE ROWNUM<=(
+    SELECT "N"
+    FROM CENTRE_STRAINE
+    );
+
+
+

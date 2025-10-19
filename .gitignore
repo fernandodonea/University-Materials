@@ -25,17 +25,7 @@
 
 #  Linux/macOS executables are extensionless 
 # Ignoring typical build/output directories 
-bin/**
-obj/**
-build/**
-Build/**
-dist/**
-out/**
-target/**
-Debug/**
-Release/**
-x64/**
-x86/**
+
 
 
 
@@ -63,16 +53,5 @@ ENV/
 .env
 .env.*
 
-# .NET / C# / ASP.NET
-.vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-*.csproj.user
-*.vcxproj.user
-TestResults/
-*.coverage
-*.coveragexml
 
 

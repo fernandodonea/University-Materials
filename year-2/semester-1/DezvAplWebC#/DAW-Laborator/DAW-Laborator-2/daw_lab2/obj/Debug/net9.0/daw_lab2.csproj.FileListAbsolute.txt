@@ -1,0 +1,15 @@
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/daw_lab2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/daw_lab2.AssemblyInfoInputs.cache
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/daw_lab2.AssemblyInfo.cs
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/daw_lab2.csproj.CoreCompileInputs.cache
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/daw_lab2.sourcelink.json
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/bin/Debug/net9.0/daw_lab2
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/bin/Debug/net9.0/daw_lab2.deps.json
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/bin/Debug/net9.0/daw_lab2.runtimeconfig.json
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/bin/Debug/net9.0/daw_lab2.dll
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/bin/Debug/net9.0/daw_lab2.pdb
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/daw_lab2.dll
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/refint/daw_lab2.dll
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/daw_lab2.pdb
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/daw_lab2.genruntimeconfig.cache
+/Users/fernando/Documents/University-Materials/year-2/semester-1/DezvAplWebC#/DAW-Laborator/DAW-Laborator-2/daw_lab2/obj/Debug/net9.0/ref/daw_lab2.dll

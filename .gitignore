@@ -1,30 +1,11 @@
-# Prerequisites
-*.d
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
+# libraries
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
 *.lib
+
 
 # Executables
 *.exe
@@ -42,8 +23,8 @@
 # macOS bundles and debug symbol folders
 *.dSYM/
 
-# Many Linux/macOS executables are extensionless; keep them out of common build dirs
-# Ignore typical build/output directories entirely (but allow an optional .gitkeep to keep the dir in git)
+#  Linux/macOS executables are extensionless 
+# Ignoring typical build/output directories 
 bin/**
 obj/**
 build/**
@@ -55,35 +36,16 @@ Debug/**
 Release/**
 x64/**
 x86/**
-!bin/.gitkeep
-!obj/.gitkeep
-!build/.gitkeep
-!Build/.gitkeep
-!dist/.gitkeep
-!out/.gitkeep
-!target/.gitkeep
-!Debug/.gitkeep
-!Release/.gitkeep
-!x64/.gitkeep
-!x86/.gitkeep
 
-# Common default executable names
-a.out
 
-# OS metadata (not executables, but safe to ignore and commonly annoying)
+
+# OS metadata 
 .DS_Store
 Icon?
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# C/C++ extras
-# Coverage and profiling
-*.gcno
-*.gcda
-*.gcov
-gmon.out
-core
 
 # CMake
 CMakeFiles/
@@ -92,25 +54,7 @@ cmake-build-*/
 
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.pyd
-.Python
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.tox/
-.nox/
-.hypothesis/
-pip-wheel-metadata/
-*.egg-info/
-.eggs/
-eggs/
-develop-eggs/
-htmlcov/
-.coverage
-.coverage.*
-.ipynb_checkpoints/
+
 # Virtual environments
 .venv/
 venv/
@@ -130,28 +74,5 @@ ENV/
 TestResults/
 *.coverage
 *.coveragexml
-# NuGet
-packages/
-*.nupkg
-*.snupkg
 
-# Haskell (Stack/Cabal)
-.stack-work/
-dist-newstyle/
-.cabal-sandbox/
-cabal.sandbox.config
-cabal.project.local
-cabal.project.local~
-*.hi
-*.dyn_hi
-*.dyn_o
-.ghc.environment.*
-.hpc/
-.hie/
 
-# R
-.Rhistory
-.RData
-.Ruserdata
-.Rapp.history
-.Rproj.user/

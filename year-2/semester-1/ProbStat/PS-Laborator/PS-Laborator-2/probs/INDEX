@@ -1,0 +1,114 @@
+Prob                    Probability and Conditional Probability
+                        Calculates probability and conditional
+                        probability of events.
+Prob.default            Probability and Conditional Probability
+                        Calculates probability and conditional
+                        probability of events.
+Prob.ps                 Probability and Conditional Probability
+                        Calculates probability and conditional
+                        probability of events.
+addrv                   Adding Random Variables to a Probability Space
+cards                   A Standard Set of Playing Cards
+countrep                Count Repetitions Counts the number of
+                        repetitions of 'vals' in a given vector 'x'.
+countrep.data.frame     Count Repetitions Counts the number of
+                        repetitions of 'vals' in a given vector 'x'.
+countrep.default        Count Repetitions Counts the number of
+                        repetitions of 'vals' in a given vector 'x'.
+empirical               Empirical Summary of a Simulation
+euchredeck              A Deck of Playing Cards for Euchre
+gen2wayTable            Generate Two-way Tables
+genIndepTable           Generate Independent Two-way Table
+genLogRegData           Generate data for logistic regression
+genXdata                Generate continuous model matrix data
+iidspace                Independent Identical Experiments Sets up a
+                        probability space corresponding to independent,
+                        identical experiments.
+intersect               Intersection of Subsets Calculates the
+                        intersection of subsets of a probability space.
+                        Comparisons are made row-wise, so that in the
+                        data frame case, 'intersect(A,B)' is a data
+                        frame with those rows that are both in 'A' and
+                        in 'B'.
+intersect.data.frame    Intersection of Subsets Calculates the
+                        intersection of subsets of a probability space.
+                        Comparisons are made row-wise, so that in the
+                        data frame case, 'intersect(A,B)' is a data
+                        frame with those rows that are both in 'A' and
+                        in 'B'.
+intersect.default       Intersection of Subsets Calculates the
+                        intersection of subsets of a probability space.
+                        Comparisons are made row-wise, so that in the
+                        data frame case, 'intersect(A,B)' is a data
+                        frame with those rows that are both in 'A' and
+                        in 'B'.
+intersect.ps            Intersection of Subsets Calculates the
+                        intersection of subsets of a probability space.
+                        Comparisons are made row-wise, so that in the
+                        data frame case, 'intersect(A,B)' is a data
+                        frame with those rows that are both in 'A' and
+                        in 'B'.
+is.probspace            Testing for a Probability Space Decides whether
+                        a given object is a probability space.
+isin                    Test Whether One Vector Is In Another Vector
+isin.data.frame         Test Whether One Vector Is In Another Vector
+isin.default            Test Whether One Vector Is In Another Vector
+isrep                   Is Repeated in a Vector Tests for a certain
+                        number of repetitions of 'vals' in a given
+                        vector 'x'.
+isrep.data.frame        Is Repeated in a Vector Tests for a certain
+                        number of repetitions of 'vals' in a given
+                        vector 'x'.
+isrep.default           Is Repeated in a Vector Tests for a certain
+                        number of repetitions of 'vals' in a given
+                        vector 'x'.
+marginal                Marginal Distributions
+noorder                 Sort and Merge Probability Space Outcomes
+nsamp                   Number of Samples from an Urn
+permsn                  Generate All Permutations of x Elements Taken m
+                        at a Time
+probspace               Probability Spaces Forms a probability space
+                        from a set of outcomes and (optional) vector of
+                        probabilities.
+probspace.default       Probability Spaces Forms a probability space
+                        from a set of outcomes and (optional) vector of
+                        probabilities.
+probspace.list          Probability Spaces Forms a probability space
+                        from a set of outcomes and (optional) vector of
+                        probabilities.
+rolldie                 Rolling a Die
+roulette                Roulette
+setdiff                 Set Difference of Subsets Calculates the
+                        (nonsymmetric) set difference of subsets of a
+                        probability space.
+setdiff.data.frame      Set Difference of Subsets Calculates the
+                        (nonsymmetric) set difference of subsets of a
+                        probability space.
+setdiff.default         Set Difference of Subsets Calculates the
+                        (nonsymmetric) set difference of subsets of a
+                        probability space.
+setdiff.ps              Set Difference of Subsets Calculates the
+                        (nonsymmetric) set difference of subsets of a
+                        probability space.
+sim                     Simulate Draws from a Sample Space
+subset.ps               Subsets of Probability Spaces This is a method
+                        for 'subset()' for the case when the input
+                        object is a probability space of class 'ps'.
+tosscoin                Tossing a Coin
+union                   Union of Subsets Calculates the union of
+                        subsets of a probability space.
+union.data.frame        Union of Subsets Calculates the union of
+                        subsets of a probability space.
+union.default           Union of Subsets Calculates the union of
+                        subsets of a probability space.
+union.ps                Union of Subsets Calculates the union of
+                        subsets of a probability space.
+urnsamples              Sampling from Urns This function creates a
+                        sample space associated with the experiment of
+                        sampling distinguishable objects from an urn.
+urnsamples.data.frame   Sampling from Urns This function creates a
+                        sample space associated with the experiment of
+                        sampling distinguishable objects from an urn.
+urnsamples.default      Sampling from Urns This function creates a
+                        sample space associated with the experiment of
+                        sampling distinguishable objects from an urn.

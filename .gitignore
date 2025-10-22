@@ -37,10 +37,6 @@ ehthumbs.db
 Desktop.ini
 
 
-# CMake
-CMakeFiles/
-CMakeCache.txt
-cmake-build-*/
 
 # Python
 __pycache__/
@@ -52,6 +48,10 @@ env/
 ENV/
 .env
 .env.*
+
+#jetbrains 
+.idea
+bin/*
 
 
 

@@ -1,8 +1,8 @@
-REM ********************************************************************
-REM Create the REGIONS table to hold region information for locations
-REM HR.LOCATIONS table has a foreign key to this table.
-
-Prompt ******  Creating REGIONS table ....
+-- REM ********************************************************************
+-- REM Create the REGIONS table to hold region information for locations
+-- REM HR.LOCATIONS table has a foreign key to this table.
+--
+-- Prompt ******  Creating REGIONS table ....
 
 CREATE TABLE regions
     ( region_id      NUMBER 
@@ -18,12 +18,12 @@ ADD ( CONSTRAINT reg_id_pk
        		 PRIMARY KEY (region_id)
     ) ;
 
-REM ********************************************************************
-REM Create the COUNTRIES table to hold country information for customers
-REM and company locations. 
-REM OE.CUSTOMERS table and HR.LOCATIONS have a foreign key to this table.
+-- REM ********************************************************************
+-- REM Create the COUNTRIES table to hold country information for customers
+-- REM and company locations.
+-- REM OE.CUSTOMERS table and HR.LOCATIONS have a foreign key to this table.
 
-Prompt ******  Creating COUNTRIES table ....
+-- Prompt ******  Creating COUNTRIES table ....
 
 CREATE TABLE countries 
     ( country_id      CHAR(2) 
@@ -40,11 +40,11 @@ ADD ( CONSTRAINT countr_reg_fk
           	  REFERENCES regions(region_id) 
     ) ;
 
-REM ********************************************************************
-REM Create the LOCATIONS table to hold address information for company departments.
-REM HR.DEPARTMENTS has a foreign key to this table.
-
-Prompt ******  Creating LOCATIONS table ....
+-- REM ********************************************************************
+-- REM Create the LOCATIONS table to hold address information for company departments.
+-- REM HR.DEPARTMENTS has a foreign key to this table.
+--
+-- Prompt ******  Creating LOCATIONS table ....
 
 CREATE TABLE locations
     ( location_id    NUMBER(4)
@@ -67,8 +67,8 @@ ADD ( CONSTRAINT loc_id_pk
         	  REFERENCES countries(country_id) 
     ) ;
 
-Rem 	Useful for any subsequent addition of rows to locations table
-Rem 	Starts with 3300
+-- Rem 	Useful for any subsequent addition of rows to locations table
+-- Rem 	Starts with 3300
 
 CREATE SEQUENCE locations_seq
  START WITH     3300
@@ -77,11 +77,11 @@ CREATE SEQUENCE locations_seq
  NOCACHE
  NOCYCLE;
 
-REM ********************************************************************
-REM Create the DEPARTMENTS table to hold company department information.
-REM HR.EMPLOYEES and HR.JOB_HISTORY have a foreign key to this table.
+-- REM ********************************************************************
+-- REM Create the DEPARTMENTS table to hold company department information.
+-- REM HR.EMPLOYEES and HR.JOB_HISTORY have a foreign key to this table.
 
-Prompt ******  Creating DEPARTMENTS table ....
+-- Prompt ******  Creating DEPARTMENTS table ....
 
 CREATE TABLE departments
     ( department_id    NUMBER(4)
@@ -102,8 +102,8 @@ ADD ( CONSTRAINT dept_id_pk
         	  REFERENCES locations (location_id)
      ) ;
 
-Rem 	Useful for any subsequent addition of rows to departments table
-Rem 	Starts with 280 
+-- Rem 	Useful for any subsequent addition of rows to departments table
+-- Rem 	Starts with 280
 
 CREATE SEQUENCE departments_seq
  START WITH     280
@@ -112,11 +112,11 @@ CREATE SEQUENCE departments_seq
  NOCACHE
  NOCYCLE;
 
-REM ********************************************************************
-REM Create the JOBS table to hold the different names of job roles within the company.
-REM HR.EMPLOYEES has a foreign key to this table.
+-- REM ********************************************************************
+-- REM Create the JOBS table to hold the different names of job roles within the company.
+-- REM HR.EMPLOYEES has a foreign key to this table.
 
-Prompt ******  Creating JOBS table ....
+-- Prompt ******  Creating JOBS table ....
 
 CREATE TABLE jobs
     ( job_id         VARCHAR2(10)
@@ -134,12 +134,12 @@ ADD ( CONSTRAINT job_id_pk
       		 PRIMARY KEY(job_id)
     ) ;
 
-REM ********************************************************************
-REM Create the EMPLOYEES table to hold the employee personnel 
-REM information for the company.
-REM HR.EMPLOYEES has a self referencing foreign key to this table.
+-- REM ********************************************************************
+-- REM Create the EMPLOYEES table to hold the employee personnel
+-- REM information for the company.
+-- REM HR.EMPLOYEES has a self referencing foreign key to this table.
 
-Prompt ******  Creating EMPLOYEES table ....
+-- Prompt ******  Creating EMPLOYEES table ....
 
 CREATE TABLE employees
     ( employee_id    NUMBER(6)
@@ -188,8 +188,8 @@ ADD ( CONSTRAINT dept_mgr_fk
     ) ;
 
 
-Rem 	Useful for any subsequent addition of rows to employees table
-Rem 	Starts with 207 
+-- Rem 	Useful for any subsequent addition of rows to employees table
+-- Rem 	Starts with 207
 
 
 CREATE SEQUENCE employees_seq
@@ -198,12 +198,12 @@ CREATE SEQUENCE employees_seq
  NOCACHE
  NOCYCLE;
 
-REM ********************************************************************
-REM Create the JOB_HISTORY table to hold the history of jobs that 
-REM employees have held in the past.
-REM HR.JOBS, HR_DEPARTMENTS, and HR.EMPLOYEES have a foreign key to this table.
-
-Prompt ******  Creating JOB_HISTORY table ....
+-- REM ********************************************************************
+-- REM Create the JOB_HISTORY table to hold the history of jobs that
+-- REM employees have held in the past.
+-- REM HR.JOBS, HR_DEPARTMENTS, and HR.EMPLOYEES have a foreign key to this table.
+--
+-- Prompt ******  Creating JOB_HISTORY table ....
 
 CREATE TABLE job_history
     ( employee_id   NUMBER(6)
@@ -235,13 +235,13 @@ ADD ( CONSTRAINT jhist_emp_id_st_date_pk
                      FOREIGN KEY (department_id)
                      REFERENCES departments
     ) ;
-
-REM ********************************************************************
-REM Create the EMP_DETAILS_VIEW that joins the employees, jobs, 
-REM departments, jobs, countries, and locations table to provide details
-REM about employees.
-
-Prompt ******  Creating EMP_DETAILS_VIEW view ...
+--
+-- REM ********************************************************************
+-- REM Create the EMP_DETAILS_VIEW that joins the employees, jobs,
+-- REM departments, jobs, countries, and locations table to provide details
+-- REM about employees.
+--
+-- Prompt ******  Creating EMP_DETAILS_VIEW view ...
 
 CREATE OR REPLACE VIEW emp_details_view
   (employee_id,

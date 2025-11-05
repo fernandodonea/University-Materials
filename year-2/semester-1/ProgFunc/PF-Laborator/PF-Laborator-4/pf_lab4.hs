@@ -110,8 +110,7 @@ aplica2 f x = f (f x)
 -- R: [3,9,12]
 
 --exemplu2:
--- map ($ 3) [ ( 4 +) , (10 * ) , ( ^ 2) , sqrt ]
--- aici aplicam valoarea 3 tuturor functiilor din lista
+-- map ($ 3 ) [ ( 4 +) , (10 * ) , ( ^ 2) , sqrt ]
 -- R:[7.0,30.0,9.0,1.7320508075688772]
 
 aMap = map (\x -> 2 * x) [1..10]
@@ -150,8 +149,9 @@ cMap = map (`elem` [2,3]) [1,3,4,5]
 first::(a,b)->a
 first (a,b)=a
 
+
 firstEl :: [(a,b)]->[a]
-firstEl = map first --aplica functia "first" tuturor elementelor din lista 
+firstEl = map fst --aplica functia "first" tuturor elementelor din lista 
 
 
 -- firstEl [('a',3),('b',2), ('c',1)]

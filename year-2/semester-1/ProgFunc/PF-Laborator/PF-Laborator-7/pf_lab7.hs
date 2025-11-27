@@ -211,7 +211,7 @@ keys (BNode st cheie valoare dr) = keys st ++ [cheie] ++ keys dr
 --Scrieți o funcție care întoarce lista valorilor nodurilor dintr-un arbore de căutare.
 values :: IntSearchTree value -> [value]
 values Empty =[]
-values (BNode st cheie Nothing dr) =[]
+values (BNode st cheie Nothing dr)= values st ++ values dr
 values (BNode st cheie (Just valoare) dr)= values st ++ [valoare] ++ values dr
 
 
@@ -241,7 +241,7 @@ insert x val (BNode st cheie valoare dr)
 --ex 8
 delete :: Int -> IntSearchTree value -> IntSearchTree value
 delete x (BNode st cheie valoare dr)
-    |x == cheie  = BNode st cheie (Nothing) dr  --stergem nodul propriu zis
+    |x == cheie  = BNode st cheie Nothing dr  --stergem nodul propriu zis
     |x < cheie  = BNode (delete x  st) cheie valoare dr
     |x > cheie  = BNode st cheie valoare (delete x dr)
 
@@ -272,7 +272,6 @@ toList (BNode st cheie (Just valoare) dr)= toList st ++ [(cheie, valoare)] ++ to
 -- Scrieți o funcție care să construiască un arbore dintr-o listă de perechi cheie-valoare.
 
 fromList :: [(Int, value)] -> IntSearchTree value 
-fromList [(cheie, valoare)] = (BNode Empty cheie (Just valoare) Empty) --radacina
 fromList ((cheie, valoare):xs) = insert cheie valoare (fromList xs)
 
 --fromList [(5,"cinci"), (3,"trei"), (8,"opt"), (1,"unu")]

@@ -1,0 +1,64 @@
+﻿
+<br />
+<h2 class="text-center">Afisare articole</h2>
+
+<br />
+
+@if(ViewBag.Message != null){
+
+    <h2 class="p-3 rounded-3 text-center mb-5 alert @ViewBag.Alert">@ViewBag.Message</h2>
+}
+
+<br />
+
+
+@* Motorul de cautare  *@
+<form method="GET">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search topics or keywords" name="search"
+               value="@ViewBag.SearchString">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </div>
+</form>
+
+@foreach (var article in ViewBag.Articles)
+{
+    <div class="card">
+
+        <partial name="ArticleInfo" model="article"></partial>
+
+        <a class="btn btn-success" asp-controller="Articles" asp-action="Show" asp-route-id="@article.Id">Afisare articol</a>
+
+    </div>
+
+    <br />
+    <br />
+}
+
+@* Afisarea paginata a articolelor *@
+
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="@ViewBag.PaginationBaseUrl=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.lastPage; i++)
+            {
+                <li class="page-item"> <a class="page-link" href="@ViewBag.PaginationBaseUrl=@i">@(i)</a> </li>
+
+            }
+
+            <li class="page-item">
+                <a class="page-link" href="@ViewBag.PaginationBaseUrl=@(ViewBag.lastPage)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+          
+       

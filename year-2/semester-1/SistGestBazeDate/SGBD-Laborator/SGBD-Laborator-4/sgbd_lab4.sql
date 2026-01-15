@@ -1,3 +1,19 @@
+--SGBD Laborator 4
+
+
+------------------------ TIPURI DE DATE COMPUSE -----------------------
+-- Tipuri de date compuse (definite de utilizator)
+-- Tipul de date înregistrare (RECORD)
+-- Tipul de date colecție (tablouri indexate – INDEX-BY TABLES
+--                         tablouri imbricate – NESTED TABLES
+--                          vectori – VARRAYS)
+
+
+-- ex E1
+-- Mențineți într-o colecție codurile celor mai prost plătiți 5 angajați care nu câștigă comision.
+-- Folosind această colecție măriți cu 5% salariul acestor angajați. Afișați valoarea veche a salariului,
+-- respectiv valoarea nouă a salariului.
+
 declare
 --cream tipul de date
     type INFO_ANG is record (

@@ -1,3 +1,31 @@
+--SGBD Tema 2
+
+
+
+-- E1. Identificați în diagrama Entitate-Relație utilizată în proiectul prezentat la materia Baze de Date din anul I, o
+-- relație din tip many-to-many. Dacă nu aveți o astfel de relație în acest proiect, atunci definiți una folosind
+-- tema aleasă în acel proiect:
+        -- a. descrieți entitățile și relația dintre acestea;
+        -- b.realizați diagrama Entitate-Relație doar pentru această parte din proiect;
+        -- c. descrieți modul de transformare al acestei relații în diagrama conceptuală, precizând toate cheile
+    -- primare, cheile externe și alte atribute esențiale;
+
+        -- d. realizați diagrama conceptuală doar pentru această parte din proiect;
+        -- e. pe baza diagramei conceptuale de la punctul d, definiți în SQL tabelele și toate constrângerile necesare;
+        -- f. adaptați una dintre cerințele exercițiilor 4-12 pentru diagrama obținută la punctul d (formulați cerința în
+    -- limbaj natural, inserați 5-10 înregistrări în fiecare tabelă utilizată, apoi rezolvați cererea propusă în
+    -- SQL).
+
+
+
+
+
+
+---------------------------- REZOLVARE----------------------------
+
+
+--ex e)
+--pe baza diagramei conceptuale de la punctul d, definiți în SQL tabelele și toate constrângerile necesare;
 CREATE  TABLE ALBUM (
     album_id NUMBER PRIMARY KEY,
     titlu VARCHAR2(50) NOT NULL,

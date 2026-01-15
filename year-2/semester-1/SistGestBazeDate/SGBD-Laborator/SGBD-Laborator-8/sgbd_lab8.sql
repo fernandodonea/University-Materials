@@ -1,8 +1,16 @@
 --SGBD Laborator 8
---grupa 243
+
+-----------------------------------SUBPROGRAME---------------------------------
 
 
-----------------ex E1--------------------
+-- ex E1
+--  Creați tabelul info_*** cu următoarele coloane:
+        -- - utilizator (numele utilizatorului care a inițiat o comandă)
+        -- - data (data și timpul la care utilizatorul a inițiat comanda)
+        -- - comanda (comanda care a fost inițiată de utilizatorul respectiv)
+        -- - nr_linii (numărul de linii selectate/modificate de comandă)
+        -- - eroare (un mesaj pentru excepții).
+
 CREATE TABLE info_DFE (
     nume_utilizator VARCHAR2(50),
     data_comanda DATE,
@@ -12,7 +20,15 @@ CREATE TABLE info_DFE (
 );
 
 
-----------------ex E2 ----------------------
+
+
+--  ex E2
+-- Modificați funcția definită la exercițiul 2, respectiv procedura definită la exercițiul 4 astfel încât
+-- să determine inserarea în tabelul info_*** a informațiile corespunzătoare fiecărui caz
+-- determinat de valoarea dată pentru parametru:
+    -- - există un singur angajat cu numele specificat;
+    -- - există mai mulți angajați cu numele specificat;
+    -- - nu există angajați cu numele specificat.
 
 
 
@@ -72,9 +88,6 @@ END f2_DFE;
 
 
 
-
-
-
 BEGIN
     DBMS_OUTPUT.PUT_LINE('Salariul este '|| f2_DFE);
 END;
@@ -82,6 +95,8 @@ END;
 
 SELECT * FROM INFO_DFE;
 /
+
+
 
 
 

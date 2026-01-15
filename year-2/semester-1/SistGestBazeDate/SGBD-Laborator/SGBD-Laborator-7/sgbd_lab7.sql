@@ -1,13 +1,21 @@
+-- SGBD Laborator 7
 
---Donea Fernando-Emanuel
---grupa 243
---Laborator 7
-
+-----------------------------------CURSOARE---------------------------------
 
 
---E2
+-- E2. Modificați exercițiul anterior astfel încât să obțineți și următoarele informații:
+-- - un număr de ordine pentru fiecare angajat care va fi resetat pentru fiecare job
+    -- - pentru fiecare job
+            -- o numărul de angajați
+            -- o valoarea lunară a veniturilor angajaților
+            -- o valoarea medie a veniturilor angajaților
+    -- - indiferent job
+            -- o numărul total de angajați
+            -- o valoarea totală lunară a veniturilor angajaților
+            -- o valoarea medie a veniturilor angajaților
+
+
 --a) cursor clasic
-
 DECLARE
     v_job_id JOBS.JOB_ID%type;
     v_job_title JOBS.JOB_TITLE%type;

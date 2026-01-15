@@ -1,7 +1,34 @@
+--SGBD Tema 3
 
 
---E3
-SET SERVEROUTPUT ON;
+-- E4. Modificați problema anterioară astfel încât să afișați și următorul text:
+-- - Categoria 1 (a împrumutat mai mult de 75% din titlurile existente)
+-- - Categoria 2 (a împrumutat mai mult de 50% din titlurile existente)
+-- - Categoria 3 (a împrumutat mai mult de 25% din titlurile existente)
+-- - Categoria 4 (altfel)
+-- E5. Creați tabelul member_*** (o copie a tabelului member). Adăugați în acest tabel coloana
+-- discount, care va reprezenta procentul de reducere aplicat pentru membrii, în funcție de categoria
+-- din care fac parte aceștia:
+-- - 10% pentru membrii din Categoria 1
+-- - 5% pentru membrii din Categoria 2
+-- - 3% pentru membrii din Categoria 3
+-- - nimic
+-- Actualizați coloana discount pentru un membru al cărui cod este dat de la tastatură. Afișați un
+-- mesaj din care să reiasă dacă actualizarea s-a produs sau nu.
+
+
+
+
+
+
+
+---------------------------- REZOLVARE----------------------------
+
+-- ex E3
+-- Definiți un bloc anonim în care să se determine numărul de filme (titluri) împrumutate de un
+-- membru al cărui nume este introdus de la tastatură. Tratați următoarele două situații: nu există nici
+-- un membru cu nume dat; există mai mulți membrii cu același nume.
+-- SET SERVEROUTPUT ON;
 
 DECLARE
 
@@ -45,6 +72,11 @@ END;
 
 
 --ex E4
+--  Modificați problema anterioară astfel încât să afișați și următorul text:
+    -- - Categoria 1 (a împrumutat mai mult de 75% din titlurile existente)
+    -- - Categoria 2 (a împrumutat mai mult de 50% din titlurile existente)
+    -- - Categoria 3 (a împrumutat mai mult de 25% din titlurile existente)
+    -- - Categoria 4 (altfel)
 SET SERVEROUTPUT ON;
 
 DECLARE
@@ -105,7 +137,20 @@ END;
 
 
 
+
+
 --ex E5
+-- Creați tabelul member_*** (o copie a tabelului member). Adăugați în acest tabel coloana
+-- discount, care va reprezenta procentul de reducere aplicat pentru membrii, în funcție de categoria
+-- din care fac parte aceștia:
+    -- - 10% pentru membrii din Categoria 1
+    -- - 5% pentru membrii din Categoria 2
+    -- - 3% pentru membrii din Categoria 3
+    -- - nimic
+-- Actualizați coloana discount pentru un membru al cărui cod este dat de la tastatură. Afișați un
+-- mesaj din care să reiasă dacă actualizarea s-a produs sau nu.
+
+
 
 --cream tabelul
 CREATE TABLE member_dfe AS SELECT * FROM member;

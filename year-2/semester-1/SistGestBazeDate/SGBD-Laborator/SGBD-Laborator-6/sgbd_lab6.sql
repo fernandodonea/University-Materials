@@ -1,11 +1,18 @@
+--SGBD Laborator  6
 
---Donea Fernando-Emanuel
---grupa 243
---Laborator 6
+-----------------------------------CURSOARE---------------------------------
+
+-- E1
+-- Pentru fiecare job (titlu – care va fi afișat o singură dată) obțineți lista angajaților (nume și
+-- salariu) care lucrează în prezent pe jobul respectiv. Tratați cazul în care nu există angajați care
+-- să lucreze în prezent pe un anumit job. Rezolvați problema folosind:
+    -- a. cursoare clasice
+    -- b. ciclu cursoare
+    -- c. ciclu cursoare cu subcereri
+    -- d. expresii cursor
 
 
 
---E1
 --a) cursor clasic
 
 DECLARE

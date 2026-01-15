@@ -1,11 +1,95 @@
-
---Donea Fernando-Emanuel
---grupa 243
-
---Lab 5
+-- SGBD Laborator 5
 
 
------------------------------------CREARE---------------------------------
+-----------------------------------EXERCITIU BONUS---------------------------------
+
+-- Definiți un tip de colecție denumit tip_sesiuni_***, care va
+-- reprezenta o listă de sesiuni desfășurate într-o conferință.
+
+-- Creați tabelul program_conferinta_*** cu următoarea
+-- structură:
+        -- cod_conferinta NUMBER(5): Codul unic al conferinței.
+        -- titlu_conferinta VARCHAR2(50): Titlul conferinței.
+        -- sesiuni tip_sesiuni_***: Colecție de sesiuni în ordinea
+        -- programului. fiecare sesiune include numele sesiunii și durata
+        -- în ore.
+        -- nr_zile NUMBER(2): Numărul de zile de desfășurare a
+        -- conferinței.
+        -- stare VARCHAR2(15): Starea conferinței (valori posibile:
+        -- "programata", „in desfasurare", „finalizata").
+
+
+
+
+-----------------------------------CERINTE---------------------------------
+
+--Definirea tipurilor și crearea tabelului conferinței:
+
+--Definiți un tip sesiune_obj ca obiect, care să conțină:
+    -- nume_sesiune VARCHAR2(50): Numele sesiunii.
+    -- durata NUMBER(2): Durata sesiunii în ore.
+    -- Definiți un tip de colecție tip_sesiuni_*** ca NESTED TABLE
+    -- de tip sesiune_obj, pe care îl veți folosi în coloana sesiuni din
+    -- tabelul program_conferinta_***.
+
+
+
+
+-- Inserarea înregistrărilor:
+
+-- Adăugați 3 înregistrări în tabelul program_conferinta_***,
+-- fiecare reprezentând o conferință cu minimum 3 sesiuni.
+-- Sesiunile sunt introduse în ordinea desfășurării lor în cadrul
+-- conferinței.
+
+
+
+
+-- Pentru o conferință specificată prin codul său:
+
+-- Adăugați o sesiune nouă la sfârșitul programului,
+-- specificând numele și durata acesteia.
+
+-- Inversați ordinea de desfășurare între două sesiuni
+-- specificate, pe baza numelui fiecărei sesiuni (presupunând
+-- că numele sesiunilor sunt unice în cadrul unei conferințe).
+
+-- Eliminați din program o sesiune al cărei nume este dat.
+-- Creșteți durata unei sesiuni specifice cu un număr dat de
+-- ore (de exemplu, adăugați 1 oră la durata sesiunii).
+
+
+
+
+-- Pentru o conferință identificată prin codul său:
+
+-- Afișați numărul total de sesiuni planificate. Afișați numele
+-- sesiunilor ordonate cronologic.
+
+
+
+
+-- Pentru fiecare conferință:
+
+-- Calculați durata totală a tuturor sesiunilor (în ore).
+
+-- Identificați conferințele cu cele mai puține sesiuni (de
+-- exemplu, conferințele care au mai puțin de 4 sesiuni).
+
+-- Actualizați starea acestor conferințe la „finalizată” dacă
+-- nu au sesiuni programate următoarele doua zile
+-- (07.11.2025, 08.11.2025).
+
+
+
+
+
+
+
+-----------------------------------REZOLVARE---------------------------------
+
+
+-----CREARE------
 
 
 --tip obiect
@@ -18,8 +102,6 @@ CREATE OR REPLACE TYPE sesiune_obj_df AS OBJECT
 
 --tip colectie
 CREATE OR REPLACE TYPE tip_sesiuni_df AS TABLE OF sesiune_obj_df;
-
-
 
 
 CREATE TABLE program_conferinta_df
@@ -36,7 +118,7 @@ NESTED TABLE sesiuni STORE AS sesiuni_tabel;
 
 
 
--------------------------------INSERARI-----------------------------
+-----INSERARI------
 
 
 INSERT INTO PROGRAM_CONFERINTA_DF
@@ -89,8 +171,7 @@ commit;
 
 
 
-
------------------------------- APLICATII ------------------------------
+-----APLICATII------
 
 
 --sesiune noua
@@ -101,7 +182,6 @@ INSERT INTO TABLE(SELECT t.sesiuni
 VALUES (
   sesiune_obj_df('Indexare', 1)
 );
-
 
 
 
@@ -153,10 +233,7 @@ where COD_CONFERINTA=101
 
 
 
-
-
 -- Eliminare sesiune
-
 
 DELETE FROM TABLE(SELECT t.sesiuni
                   FROM program_conferinta_df t
@@ -166,9 +243,6 @@ WHERE s.nume_sesiune = 'Select';
 
 select * from PROGRAM_CONFERINTA_DF
 where COD_CONFERINTA=101
-
-
-
 
 
 
@@ -183,10 +257,6 @@ WHERE s.nume_sesiune = 'Intro';
 
 select * from PROGRAM_CONFERINTA_DF
 where COD_CONFERINTA=101
-
-
-
-
 
 
 
@@ -219,12 +289,8 @@ GROUP BY
 
 
 
+
 --conferinte cu cele mai putine sesiuni
 SELECT titlu_conferinta, CARDINALITY(sesiuni) AS "Nr Sesiuni"
 FROM program_conferinta_df
 WHERE CARDINALITY(sesiuni) < 4;
-
-
-
-
-

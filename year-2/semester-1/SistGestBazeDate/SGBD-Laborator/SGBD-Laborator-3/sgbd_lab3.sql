@@ -1,8 +1,10 @@
--- SGBD Laborator
--- Donea Fernando-Emanuel
+-- SGBD Laborator 3
+
+------------------------- BLOCURI/INSTRUCTIUNI -------------------
 
 
--- EX 1
+-- ex E1
+-- Se dă următorul bloc:
 
 DECLARE
     numar number(3):=100;
@@ -33,8 +35,10 @@ END;
 
 
 
---EX 3
-
+--ex E3
+-- Definiți un bloc anonim în care să se determine numărul de filme (titluri) împrumutate de un
+-- membru al cărui nume este introdus de la tastatură. Tratați următoarele două situații: nu există nici
+-- un membru cu nume dat; există mai mulți membrii cu același nume.
 
 SET SERVEROUTPUT ON;
 DECLARE

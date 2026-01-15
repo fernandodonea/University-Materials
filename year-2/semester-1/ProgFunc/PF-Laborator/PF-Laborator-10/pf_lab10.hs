@@ -106,7 +106,7 @@ eval (Not p) env = not (eval p env)
 eval (p1 :|: p2) env = eval p1 env || eval p2 env
 eval (p1 :&: p2) env = eval p1 env && eval p2 env
 evaln (p1 :->: q) env = implic (eval p1 env) (eval q env)
-evaln (p1 :<->: q) env = echiv (eval p1 env) (eval q env)
+evaln (p1 :<->: q) env =  (eval p1 env) `echiv` (eval q env)
 
 
 
@@ -130,6 +130,9 @@ variabile (Var n) = [n]
 variabile (Not p) = variabile p
 variabile (p1 :|: p2) = nub (variabile p1 ++ variabile p2)
 variabile (p1 :&: p2) = nub (variabile p1 ++ variabile p2)
+variabile (p1 :->: p2) = nub (variabile p1 ++ variabile p2)
+variabile (p1 :<->: p2) = nub (variabile p1 ++ variabile p2)
+
 
 
 test_variabile =
@@ -165,6 +168,7 @@ envs (x:xs) = map ((x, False):) (envs xs) ++ map ((x, True):) (envs xs)
 
 satisfiabila :: Prop -> Bool
 satisfiabila x = any (\acc -> eval x acc) (envs (variabile x))
+--satisfiabila x = any  (eval x)  (envs (variabile x))
 
 
 
@@ -197,7 +201,7 @@ test_valida2 = valida (Not (Var "P") :|: Var "P") == True
 -- Două propoziții sunt echivalente dacă au mereu aceeași valoare de adevăr, indiferent de valorile variabilelor propoziționale. Scrieți o funcție care verifică dacă două propoziții sunt echivalente.
 
 echivalenta :: Prop -> Prop -> Bool
-echivalenta a b = valida ( (a :->: b) :&: (b :->: a) )
+echivalenta a b = valida ((a :->: b) :&: (b :->: a) )
 
 -- pt ex 9 => daca vrem mai simplu folosind functia valida 
 -- valid de echivalenta dintre v1 si v2

@@ -1,0 +1,32 @@
+f = open("hamilton.in")
+n, m = [int(x) for x in f.readline().split()]
+adj = [[] for i in range(n)]
+
+for linie in f:
+    x, y, c = [int(x) for x in linie.split()]
+    adj[y].append((x, c)) #liste pe intrare
+    #adj[y].append((x, c))
+f.close()
+inf = float("inf")
+nr_subm = 1 << n
+dp = [[inf for i in range(nr_subm)] for j in range(n)]
+dp[0][1]=0
+for x in range(0,nr_subm): #subm nevide
+    for i in range(n):
+        if x&(1<<i):
+            for j,c in adj[i]:
+                if x&(1<<j)  and dp[j][x^(1<<i)]+c<dp[i][x]:
+                    dp[i][x]=min(dp[i][x],dp[j][x^(1<<i)]+c)
+                    #pred[i][x]=j
+
+rez=inf
+
+for i,c in adj[0]:
+    if dp[i][nr_subm-1]<inf:
+
+            rez=min(rez,dp[i][nr_subm-1]+c)
+
+f=open("hamilton.out","w")
+f.write(str(rez))
+f.close()
+#print(pred)

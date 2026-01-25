@@ -1,0 +1,28 @@
+#User function Template for python3
+class Solution:
+    def check(self, n, m, edges): 
+        adj=[[] for i in range(n)]
+        for x,y in edges:
+            adj[y-1].append(x-1)
+            adj[x-1].append(y-1)
+        #noduri 0,...n-1
+        #multimi- reprezentate ca siruri binare,memorate in baza 10 (x)
+        # un nod apartine unei multimi - pozitia in bit
+        nr_submult= 1 << n
+        dp=[[False for i in range(nr_submult)] for j in range(n)]
+        
+        for i in range(n):
+            dp[i][1<<i]=True  #exista lantul [i] care se termina cu i
+        for x in range(1, nr_submult): #toate sumbultimile nevide
+            for i in range(n):
+                if x & (1<<i): # i este in submultime
+                    #dp[i][x] este True daca
+                    #exista un vecin j al lui i astfel incat
+                    #avem drum pana la j prin multimea corespunzatoare
+                    # lui x fara elementul i
+                    for j in adj[i]: #vecinii  lui i
+                        if (x & (1<<j)!=0)  and dp[j][x^(1<<i)]:  #(j este in S)
+                            dp[i][x]=True #dp[j][S-{i}]
+        for i in range(n): #exista drum care se termina cu i si trece prin toate nodurile
+            if dp[i][nr_submult-1]: return True 
+        return False

@@ -1,7 +1,7 @@
 # BFS - Parcurgere in latime
 
-Se considera un graf orientat cu N varfuri si M arce.
 
+Se considera un graf orientat cu N varfuri si M arce.
 # Cerinta
 Fiind dat un nod S, sa se determine, pentru fiecare nod X, numarul minim de arce ce trebuie parcurse pentru a ajunge din nodul sursa S la nodul X.
 

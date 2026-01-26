@@ -1,47 +1,100 @@
+#include <iostream>
 #include <fstream>
 #include <vector>
 using namespace std;
 ifstream fin("dfs.in");
 ofstream fout("dfs.out");
-int n,m,viz[101];
-vector<int> vecini[101]; // Lista de adiacenta
-void citire()
+
+/*
+Sa se determine numarul componentelor conexe ale grafului.
+*/
+
+int n,m;
+
+vector <vector <int>> L; //lista de adiacenta a muchiilor
+
+
+vector <int> culoare;
+enum col {
+    alb=0,
+    gri=1,
+    negru=2
+};
+
+//vector <int> d;
+//vector <int> tata;
+
+int timp;
+vector <int> descoperit;
+vector <int> finalizat;
+
+void Citire()
 {
-    int x,y;
     fin>>n>>m;
+    L.resize(n+1);
+    descoperit.resize(n+1);
+    finalizat.resize(n+1);
+    culoare.resize(n+1);
+
     for(int i=1;i<=m;i++)
     {
+        int x,y;
         fin>>x>>y;
-        vecini[x].push_back(y); 
-        vecini[y].push_back(x); 
+        L[x].push_back(y);
+        L[y].push_back(x);//graf neorientat
     }
 }
-void dfs(int nod)
+
+void Init()
 {
-    viz[nod]=1;
-    //parcurgem vecinii
-    for(auto vecin :vecini[nod]) // Iteram doar prin vecinii nodului curent
-    {
-        if(viz[vecin]==0)
-        {
-            dfs(vecin);
-        }
-    }
-}
-int main()
-{
-    citire();
-    int k=0;
     for(int i=1;i<=n;i++)
     {
-        if(viz[i]==0)
-        {
-            dfs(i);
-            k++;
+        culoare[i]=alb;
+        //tata[i]=0;
+        //d[i]=inf;
+    }
+}
 
+void DFS(int u)
+{
+    culoare[u]=gri;
+
+    timp++;
+    descoperit[u]=timp;
+
+    for(auto v:L[u])
+    {
+        if(culoare[v]==alb)
+        {
+            //tata[v]=u;
+            //d[v]=d[u]+1;
+            DFS(v);
+    
         }
     }
-    fout<<k;
+
+    culoare[u]=negru;
+
+    timp++;
+    finalizat[u]=timp;
+}
+
+int main()
+{
+    Citire();
+
+    int nr_comp_conexe=0;
+    for(int i=1;i<=n;i++)
+    {
+        if(culoare[i]==alb)
+        {
+            DFS(i);
+            nr_comp_conexe++;
+        }
+    }
+    fout<<nr_comp_conexe;
+
+    fin.close();
+    fout.close();
     return 0;
-    
 }

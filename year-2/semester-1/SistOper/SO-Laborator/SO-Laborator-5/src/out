@@ -1,0 +1,8 @@
+total 40
+-rw-r--r--  1 fernando  staff     0 Nov  4 10:09 idk.txt
+-rw-r--r--  1 fernando  staff   585 Nov  3 18:32 my-exec-engine.c
+-rw-r--r--  1 fernando  staff  1951 Nov  4 09:55 my-script-engine.c
+-rw-r--r--  1 fernando  staff  1347 Nov  4 10:17 my-shell.c
+-rw-r--r--  1 fernando  staff  2589 Nov  4 10:17 my-shellv2.c
+-rwxr-xr-x  1 fernando  staff    38 Nov  3 21:56 myscript.sh
+-rw-r--r--  1 fernando  staff     0 Nov  4 10:20 out

@@ -1,0 +1,26 @@
+services:
+  server:
+    image: retele:latest
+    container_name: server
+    command: tail -f /dev/null
+    volumes:
+      - ./app:/app
+    networks:
+      - rc_tema2
+    cap_add:
+      - NET_ADMIN
+
+  client:
+    image: retele:latest
+    container_name: client
+    command: tail -f /dev/null
+    volumes:
+      - ./app:/app
+    networks:
+      - rc_tema2
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  rc_tema2:
+    driver: bridge

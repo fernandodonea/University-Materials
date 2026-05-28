@@ -5,6 +5,11 @@ using namespace std;
 // #include <fstream>
 // ifstream cin("input.txt");
 
+
+/*
+    test case 3: imi da overflow??
+ */
+
 struct punct
 {
     long long x,y;
@@ -45,7 +50,7 @@ c1 c2 c3
     return delta;
 }
 
-int criteriuNumeric(punct A, punct B, punct C, punct D)
+__int128_t criteriuNumeric(punct A, punct B, punct C, punct D)
 {
     __int128_t delta1=A.x * getDeterminantGrad3(B.y, B.x*B.x+B.y*B.y, 1,
                                                   C.y, C.x*C.x+C.y*C.y, 1,

@@ -20,3 +20,4 @@
 *.snupkg binary
 *.rds binary
 *.rda binary
+main

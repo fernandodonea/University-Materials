@@ -8,7 +8,7 @@ Putem roti banda cum vrem noi, fără niciun cost. Putem întoarce
 cele k piese de pe turnichet în orice moment. Vrem ca, în final, piesele să fie ordonate crescător în ordinea
 acelor de ceasornic (de la dreapta la stânga), întorcând turnichetul de cât mai puține ori.
 
-![img.png](img.png)
+![topspin.png](topspin.png)
 ### Cerințe
 1. Găsiți o euristică admisibilă și cât mai strânsă pentru problema dată. 
 Justificați admisibilitatea euristicii. *(1p)*

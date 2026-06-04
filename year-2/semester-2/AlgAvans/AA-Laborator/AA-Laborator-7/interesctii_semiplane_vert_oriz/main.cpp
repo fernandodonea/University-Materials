@@ -45,7 +45,7 @@ int main()
             //a*x+c<=0
             //a*x<=-c
             //x<=-c/a
-            float limita=-c/a;
+            float limita=-c/a; //cordonata lui x
             if(a>0)
             {
                 max_x=mini(max_x, limita);
@@ -57,13 +57,16 @@ int main()
         }
         else //cazul orizontal
         {
-            float limita=-c/b;
+            //b*y+c<=0
+            float limita=-c/b; //cordonata lui y
             if(b>0)
             {
+                //y<=-b/c
                 max_y=mini(max_y,limita);
             }
             else
             {
+                //y>=-b/c
                 min_y=maxi(min_y, limita);
             }
         } 

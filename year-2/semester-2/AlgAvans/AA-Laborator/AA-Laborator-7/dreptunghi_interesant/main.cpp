@@ -47,7 +47,7 @@ void citireDrepte()
         //cazul vertical
         if(a!=0)
         {
-            //a*x+c<=0  <=>   c<=-c/a
+            //a*x+c<=0  <=>   x<=-c/a
 
             double limita=-c/a;
             if(a>0) //perete dreapta

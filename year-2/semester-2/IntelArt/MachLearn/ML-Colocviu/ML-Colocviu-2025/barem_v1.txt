@@ -1,0 +1,24 @@
+Subiectul 1 - max 3.5p
+1p – acuratețe minimă pe datele de test = 50%
+2p – acuratețe minimă pe datele de test = 60%
+3p – acuratețe minimă pe datele de test = 65%
+3.5p – acuratețe minimă pe datele de test = 70%
+
+Subiectul 2 - max 2.5p
+Creați o funcție care aplică mulțimea de 500 de 3-grams și returnează un vector
+cu 500 de componente.
+
+Subiectul 3 - max 2.5p
+1p – acuratețe minimă pe datele de test = 65%
+2p – acuratețe minimă pe datele de test = 70%
+2.5p – acuratețe minimă pe datele de test = 78%
+
+Subiectul 4 - max 2.5p
+1p – acuratețe minimă pe datele de test = 77%
+2p – acuratețe minimă pe datele de test = 80%
+2.5p – acuratețe minimă pe datele de test = 81%
+
+Subiectul 5 - max 1.5p
+0.5p per raport per subiect (Subiectele 1, 3 si 4 presupun cate un raport)
+
+1p din oficiu

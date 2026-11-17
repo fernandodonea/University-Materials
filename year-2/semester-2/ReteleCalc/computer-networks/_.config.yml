@@ -1,0 +1,13 @@
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - index.md
+  - curs/README.md
+  - capitolul1/README.md
+  - capitolul2/README.md
+  - capitolul3/README.md
+  - capitolul4/README.md
+  - capitolul5/README.md
